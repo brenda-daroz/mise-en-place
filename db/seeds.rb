@@ -20,15 +20,16 @@ end
 api_data = { key: api_key }
 url = RestClient.get("https://api.spoonacular.com/recipes/random?apiKey=#{api_data[:key]}")
 response = JSON.parse(url)
-result = response["recipes"]
-title = result[0]["title"]
-summary = result[0]["summary"]
-vegetarian = result[0]["vegetarian"]
-vegan = result[0]["vegan"]
-image = result[0]["image"]
-servings = result[0]["servings"]
-readyInMinutes = result[0]["readyInMinutes"]
 
+result = response["recipes"][0]
+
+title = result["title"]
+summary = result["summary"]
+vegetarian = result["vegetarian"]
+vegan = result["vegan"]
+image = result["image"]
+servings = result["servings"]
+ready_in_minutes = result["readyInMinutes"]
 
 recipe = Recipe.new(
   title: title,
@@ -37,7 +38,16 @@ recipe = Recipe.new(
   vegan: vegan,
   image: image,
   servings: servings,
-  readyInMinutes: readyInMinutes
+  readyInMinutes: ready_in_minutes
 )
 
 p recipe
+
+result_instructions = result["analyzedInstructions"][0]["steps"][0]
+
+steps_number = result_instructions["number"]
+steps_content = result_instructions["step"]
+
+step = Step.new(step: steps_content, number: steps_number)
+
+p step
