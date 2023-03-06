@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_06_143435) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_06_160501) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,14 +46,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_143435) do
     t.string "title"
     t.text "summary"
     t.boolean "vegetarian"
-    t.string "vegan"
-    t.string "boolean"
-    t.string "readyInMinutes"
-    t.string "integer"
     t.integer "servings"
-    t.integer "image"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "vegan"
+    t.integer "readyInMinutes"
   end
 
   create_table "steps", force: :cascade do |t|
