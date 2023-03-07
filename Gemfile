@@ -79,3 +79,4 @@ end
 
 # custom gems
 gem 'rest-client'
+gem 'pg_search'

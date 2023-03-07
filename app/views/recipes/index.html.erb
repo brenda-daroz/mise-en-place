@@ -1,0 +1,19 @@
+<h1>Mise en place</h1>
+
+<%= form_with url: recipes_path, method: :get, class: "d-flex" do |form| %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a recipe"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+  <%= form.radio_button :vegan, "true", class: "d-none" %>
+  <%= form.label :vegan_true, "VEGAN OH YEAH" %>
+<% end %>
+
+<% @recipes.each do |recipe| %>
+  <div>
+    <%= image_tag(recipe.image) %>
+    <%= link_to recipe.title, recipe_path(recipe) %>
+  </div>
+<% end %>
