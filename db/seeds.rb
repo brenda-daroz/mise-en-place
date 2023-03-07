@@ -11,7 +11,7 @@ require 'json'
 require 'rest-client'
 
 puts "Destroying recipes"
-# Recipe.destroy_all
+Recipe.destroy_all
 
 def api_key
   ENV.fetch("SPOONACULAR_API_KEY")
@@ -31,6 +31,8 @@ image = result["image"]
 servings = result["servings"]
 ready_in_minutes = result["readyInMinutes"]
 
+puts "Creating a recipe ..."
+
 recipe = Recipe.new(
   title: title,
   summary: summary,
@@ -40,21 +42,38 @@ recipe = Recipe.new(
   servings: servings,
   readyInMinutes: ready_in_minutes
 )
+recipe.save!
 
 # p recipe
+puts "Getting the steps for that recipe ..."
 
 steps_result = result["analyzedInstructions"][0]["steps"]
 steps_result.map do |step|
   number = step["number"]
   step = step["step"]
-  step_instance = Step.new(step: step, number: number)
-  p step_instance
+  step_instance = Step.new(step: step, number: number, recipe_id: recipe[:id])
+  # p step_instance
+  step_instance.save!
 end
 
-ingredients_list = result["extendedIngredients"]
+puts "Getting ingredients and measurements ..."
 
+ingredients_list = result["extendedIngredients"]
 ingredients_list.map do |ingredient|
   name = ingredient["name"]
-  measures = ingredient["measures"]
-  p measures
+  ingredient_instance = Ingredient.new(name: name)
+  ingredient_instance.save!
+  us_amount = ingredient["measures"]["us"]["amount"]
+  eu_amount = ingredient["measures"]["metric"]["amount"]
+  us_unit = ingredient["measures"]["us"]["unitShort"]
+  eu_unit = ingredient["measures"]["metric"]["unitShort"]
+  recipe_ingredient = RecipeIngredient.new(
+    recipe_id: recipe[:id],
+    ingredient_id: ingredient_instance[:id],
+    measurement_us_amount: us_amount,
+    measurement_eu_amount: eu_amount,
+    measurement_us_unit: us_unit,
+    measurement_eu_unit: eu_unit
+  )
+  recipe_ingredient.save!
 end
