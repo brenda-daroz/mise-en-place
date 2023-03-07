@@ -41,13 +41,20 @@ recipe = Recipe.new(
   readyInMinutes: ready_in_minutes
 )
 
-p recipe
+# p recipe
 
-result_instructions = result["analyzedInstructions"][0]["steps"][0]
+steps_result = result["analyzedInstructions"][0]["steps"]
+steps_result.map do |step|
+  number = step["number"]
+  step = step["step"]
+  step_instance = Step.new(step: step, number: number)
+  p step_instance
+end
 
-steps_number = result_instructions["number"]
-steps_content = result_instructions["step"]
+ingredients_list = result["extendedIngredients"]
 
-step = Step.new(step: steps_content, number: steps_number)
-
-p step
+ingredients_list.map do |ingredient|
+  name = ingredient["name"]
+  measures = ingredient["measures"]
+  p measures
+end
