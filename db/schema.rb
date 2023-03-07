@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_06_163122) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_07_111915) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,14 +31,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_163122) do
 
   create_table "recipe_ingredients", force: :cascade do |t|
     t.bigint "recipe_id", null: false
-    t.string "ingredient"
-    t.string "references"
     t.float "measurement_us_amount"
     t.float "measurement_eu_amount"
     t.string "measurement_us_unit"
     t.string "measurement_eu_unit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "ingredient_id", null: false
+    t.index ["ingredient_id"], name: "index_recipe_ingredients_on_ingredient_id"
     t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id"
   end
 
@@ -77,6 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_163122) do
 
   add_foreign_key "favourites", "recipes"
   add_foreign_key "favourites", "users"
+  add_foreign_key "recipe_ingredients", "ingredients"
   add_foreign_key "recipe_ingredients", "recipes"
   add_foreign_key "steps", "recipes"
 end
