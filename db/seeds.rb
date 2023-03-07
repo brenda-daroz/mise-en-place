@@ -10,8 +10,9 @@
 require 'json'
 require 'rest-client'
 
-puts "Destroying recipes"
+puts "Destroying recipes and ingredients"
 Recipe.destroy_all
+Ingredient.destroy_all
 
 def api_key
   ENV.fetch("SPOONACULAR_API_KEY")
@@ -61,8 +62,12 @@ results.each do |result|
   ingredients_list = result["extendedIngredients"]
   ingredients_list.map do |ingredient|
     name = ingredient["name"]
-    ingredient_instance = Ingredient.new(name: name)
-    ingredient_instance.save!
+    if Ingredient.find_by(name: name)
+      ingredient_instance = Ingredient.find_by(name: name)
+    else
+      ingredient_instance = Ingredient.new(name: name)
+      ingredient_instance.save!
+    end
 
     us_amount = ingredient["measures"]["us"]["amount"]
     eu_amount = ingredient["measures"]["metric"]["amount"]
