@@ -2,10 +2,21 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="ingredients"
 export default class extends Controller {
-  static targets = ["amount", "unit"]
+  static targets = ["ingredientsList"]
+  static values = {
+    recipeId: String
+  }
 
   connect() {
-    console.log(this.amountTarget)
-    console.log(this.unitTarget)
+    console.log("Hello from stimulus")
+  }
+
+  changeUnits(e) {
+    fetch(e.target.dataset.route)
+      .then((response) => response.text())
+      .then(data => {
+        console.log(data)
+        this.ingredientsListTarget.innerHTML = data
+      })
   }
 }

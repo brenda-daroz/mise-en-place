@@ -1,24 +1,19 @@
-
-<%= image_tag @recipe.image  %>
+<%= image_tag @recipe.image %>
 <h1><%= @recipe.title %></h1>
 
-<div data-controller="ingredients">
-  <button data-action="click->ingredients#changeUnits">US</button>
-    <h4>Ingredients</h4>
-    <ul>
-      <% @recipe.recipe_ingredients.each do |recipe_ingredient|  %>
-        <li>
-          <p data-ingredients-target="amount"><%= recipe_ingredient.measurement_us_amount%></p>
-          <p data-ingredients-target="unit"><%= recipe_ingredient.measurement_us_unit %></p>
-          <%= recipe_ingredient.ingredient.name.capitalize %>
-        </li>
-      <% end %>
-    </ul>
+<div
+  data-controller="ingredients"
+  data-ingredients-recipe-id-value="<%= @recipe.id %>"
+>
+  <div data-ingredients-target="ingredientsList">
+    <%= render "ingredients", ingredients: ingredients, measurement: measurement %>
+  </div>
 </div>
 
 <h4>Steps</h4>
 <ul>
   <% @recipe.steps.each_with_index do |step| %>
-    <li><%= step.number %>. <%= step.step %></li>
+    <li><%= step.number %>.
+      <%= step.step %></li>
   <% end %>
 </ul>
