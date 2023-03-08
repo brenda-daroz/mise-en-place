@@ -79,3 +79,5 @@ end
 
 # custom gems
 gem 'rest-client'
+gem 'pg_search'
+gem 'erb-formatter'
