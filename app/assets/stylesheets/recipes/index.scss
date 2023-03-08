@@ -1,0 +1,38 @@
+.card {
+  border-radius: 12px;
+  border-color: #D1CBC8;
+  margin: 20px 30px;
+}
+
+.card-title {
+  color: #231106;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 10px 50px 15px 20px;
+}
+
+img {
+  border-radius: 12px 12px 0px 0px;
+}
+
+h1 {
+  text-align: center;
+}
+
+#search-bar {
+  border-radius: 20px;
+  height: 40px;
+  border-color: #DB6C2B;
+  border-style: solid;
+  border-width: 1px;
+}
+
+#search-bar::placeholder {
+  color: #D1CBC8;
+}
+
+.searchbutton {
+  border: none;
+  background: none;
+  color: #DB6C2B;
+}
