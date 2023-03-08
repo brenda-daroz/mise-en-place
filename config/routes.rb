@@ -4,8 +4,10 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 
-  resources :recipes, only: [:index, :show]
-  # resources :recipes, only: [:new, :create, :index, :show] do
-  #   resources :favourites, only: [:new, :create]
-  # end
+  resources :recipes, only: [:index, :show] do
+    get 'ingredients/:measurement', to: 'recipes#ingredients', as: :ingredients
+    resources :favourites, only: [:create]
+  end
+
+  resources :favourites, only: [:delete]
 end

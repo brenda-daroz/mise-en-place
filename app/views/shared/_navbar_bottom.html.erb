@@ -1,0 +1,26 @@
+
+<div class="navbar_bottom">
+  <%= link_to root_path do %>
+    <% if  current_page?(controller: 'pages', action: 'home') %>
+      <%= image_tag "icons/home_oranje.svg" %>
+    <% else %>
+      <%= image_tag "icons/home_grey.svg" %>
+    <% end %>
+  <% end %>
+
+  <%= link_to root_path do %>
+    <% if  current_page?(controller: 'pages', action: 'home') %>
+      <%= image_tag "icons/heart_oranje.svg" %>
+    <% else %>
+      <%= image_tag "icons/heart_grey.svg" %>
+    <% end %>
+  <% end %>
+
+  <%= link_to root_path do %>
+    <% if  current_page?(controller: 'pages', action: 'home') %>
+      <%= image_tag "icons/user_oranje.svg" %>
+    <% else %>
+      <%= image_tag "icons/user_grey.svg" %>
+    <% end %>
+  <% end %>
+</div>
