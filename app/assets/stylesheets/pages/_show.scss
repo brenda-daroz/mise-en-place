@@ -26,3 +26,11 @@
 .show-title {
   margin: 30px 20px 30px 0px;
 }
+
+.cooking-mode::backdrop {
+  background-color: rgb(255, 255, 255);
+}
+
+.cooking-mode-hidden {
+  display: none;
+}
