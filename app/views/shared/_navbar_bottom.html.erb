@@ -1,15 +1,15 @@
 
 <div class="navbar_bottom">
   <%= link_to root_path do %>
-    <% if  current_page?(controller: 'pages', action: 'home') %>
+    <% if params[:controller] == 'pages' %>
       <%= image_tag "icons/home_oranje.svg" %>
     <% else %>
       <%= image_tag "icons/home_grey.svg" %>
     <% end %>
   <% end %>
 
-  <%= link_to root_path do %>
-    <% if  current_page?(controller: 'pages', action: 'home') %>
+  <%= link_to favourites_path do %>
+    <% if params[:controller] == 'favourites' %>
       <%= image_tag "icons/heart_oranje.svg" %>
     <% else %>
       <%= image_tag "icons/heart_grey.svg" %>
@@ -17,7 +17,7 @@
   <% end %>
 
   <%= link_to root_path do %>
-    <% if  current_page?(controller: 'pages', action: 'home') %>
+    <% if  params[:controller] == 'users' %>
       <%= image_tag "icons/user_oranje.svg" %>
     <% else %>
       <%= image_tag "icons/user_grey.svg" %>

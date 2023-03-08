@@ -3,11 +3,12 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   root to: "pages#home"
+  resources :pages, only: [:home]
 
   resources :recipes, only: %i[index show] do
     get 'ingredients/:measurement', to: 'recipes#ingredients', as: :ingredients
     resources :favourites, only: [:create]
   end
 
-  resources :favourites, only: [:delete, :show]
+  resources :favourites, only: [:delete, :index]
 end

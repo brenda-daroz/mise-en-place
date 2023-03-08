@@ -1,0 +1,10 @@
+<h1>Favo</h1>
+<p>Find me in app/views/pages/home.html.erb</p>
+
+<% @favourites.each do |favourite| %>
+  <div class="card">
+    <%= image_tag(favourite.recipe.image) %>
+    <%#= label_tag 'label' %>
+    <%= link_to favourite.recipe.title, recipe_path(favourite.recipe), class: "card-title" %>
+  </div>
+<% end %>
