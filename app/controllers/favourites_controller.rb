@@ -1,6 +1,6 @@
 class FavouritesController < ApplicationController
 
-  def show
+  def index
     @favorites = Favorite.where(user: current_user)
   end
 
@@ -12,5 +12,6 @@ class FavouritesController < ApplicationController
   end
 
   def del
+  end
 
 end

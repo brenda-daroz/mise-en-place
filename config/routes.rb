@@ -9,6 +9,6 @@ Rails.application.routes.draw do
     get 'cook', to: 'recipes#cook', as: :cook
     resources :favourites, only: [:create]
   end
-
+  
   resources :favourites, only: %i[delete show]
-end
+
