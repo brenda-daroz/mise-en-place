@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 
-  resources :recipes, only: [:index, :show] do
+  resources :recipes, only: %i[index show] do
     get 'ingredients/:measurement', to: 'recipes#ingredients', as: :ingredients
     resources :favourites, only: [:create]
   end
