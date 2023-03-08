@@ -9,5 +9,8 @@ Rails.application.routes.draw do
 
   resources :recipes, only: [:index, :show] do
     get 'ingredients/:measurement', to: 'recipes#ingredients', as: :ingredients
+    resources :favourites, only: [:create]
   end
+
+  resources :favourites, only: [:delete]
 end
