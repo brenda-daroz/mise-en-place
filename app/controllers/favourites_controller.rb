@@ -11,4 +11,6 @@ class FavouritesController < ApplicationController
     @favo.save
   end
 
+  def del
+
 end
