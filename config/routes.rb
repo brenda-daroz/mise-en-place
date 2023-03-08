@@ -14,3 +14,4 @@ Rails.application.routes.draw do
   resources :favourites, only: [:delete, :index]
 end
 
+
