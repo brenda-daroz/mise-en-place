@@ -101,7 +101,7 @@ end
 
 User.all.each do | user |
   Recipe.all.each do | recipe |
-    favo = Favorite.new(user_id: user.id, recipe_id: recipe.id )
+    favo = Favourite.new(user_id: user.id, recipe_id: recipe.id )
     favo.save!
   end
 end
