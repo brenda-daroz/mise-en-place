@@ -12,5 +12,6 @@ class FavouritesController < ApplicationController
   end
 
   def del
+  end
 
 end
