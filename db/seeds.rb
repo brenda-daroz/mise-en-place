@@ -10,9 +10,24 @@
 require 'json'
 require 'rest-client'
 
-puts "Destroying recipes and ingredients"
+
+
+puts "Destroying recipes and ingredients and users and favorites"
 Recipe.destroy_all
 Ingredient.destroy_all
+User.destroy_all
+
+
+
+puts 'Creating 10 fake users...'
+10.times do
+  User.create(
+  email: "#{Faker::Name.first_name}@gmail.com",
+  password: "123456"
+)
+end
+
+
 
 def api_key
   ENV.fetch("SPOONACULAR_API_KEY")
@@ -84,3 +99,16 @@ results.each do |result|
     recipe_ingredient.save!
   end
 end
+
+User.all.each do | user |
+  Recipe.all.each do | recipe |
+    favo = Favorite.new(user_id: user.id, recipe_id: recipe.id )
+    favo.save!
+  end
+end
+
+
+
+# iterate throught all users
+# for each user, create a new favorite
+# Favorite.create(user: , receipe: )
