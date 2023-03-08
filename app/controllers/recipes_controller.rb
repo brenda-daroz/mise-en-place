@@ -8,13 +8,14 @@ class RecipesController < ApplicationController
       else
         @recipes = Recipe.where(vegan: true)
       end
+    elsif params[:query].present?
+      @recipes = Recipe.global_search(params[:query])
     else
-      if params[:query].present?
-        @recipes = Recipe.global_search(params[:query])
-      else
-        @recipes = Recipe.all
-      end
+      @recipes = Recipe.all
     end
+  end
+
+  def cook
   end
 
   def show

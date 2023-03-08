@@ -3,10 +3,9 @@
 <%= form_with url: recipes_path, method: :get, class: "d-flex" do |form| %>
 
   <%= text_field_tag :query,
-    params[:query],
-    id: "search-bar",
-    placeholder: "Find a recipe"
-  %>
+  params[:query],
+  id: "search-bar",
+  placeholder: "Find a recipe" %>
   <%= button_tag "search", type: "submit", class: "searchbutton" do %>
     <i class="fa-solid fa-magnifying-glass"></i>
   <% end %>
@@ -18,7 +17,13 @@
 
 <% @recipes.each do |recipe| %>
   <div class="card">
-    <%= image_tag(recipe.image) %>
+    <% if recipe.image? %>
+      <%= image_tag recipe.image %>
+    <% else %>
+      <p>
+        no image with this site
+      </p>
+    <% end %>
     <%#= label_tag 'label' %>
     <%= link_to recipe.title, recipe_path(recipe), class: "card-title" %>
   </div>

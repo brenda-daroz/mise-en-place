@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import IngredientsController from "./ingredients_controller"
 application.register("ingredients", IngredientsController)
+
+import PageOrientationController from "./page_orientation_controller"
+application.register("page-orientation", PageOrientationController)
