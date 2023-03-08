@@ -1,13 +1,13 @@
 
 <div class="form-box">
-<h2>Sign up</h2>
+<h2>Create an account</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <div>
-      <%= f.input :email,
+      <%= f.input_field :email,
                   required: true,
                   autofocus: false,
                   input_html: { autocomplete: "email" }%>
@@ -16,7 +16,7 @@
     </div>
 
     <div>
-      <%= f.input :password,
+      <%= f.input_field :password,
                   required: true,
                   hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                   input_html: { autocomplete: "new-password" } %>
@@ -25,7 +25,7 @@
     </div>
 
     <div>
-      <%= f.input :password_confirmation,
+      <%= f.input_field :password_confirmation,
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
       <%= f.label :password_confirmation,
