@@ -18,7 +18,6 @@ Ingredient.destroy_all
 User.destroy_all
 
 
-
 puts 'Creating 10 fake users...'
 10.times do
   User.create(
