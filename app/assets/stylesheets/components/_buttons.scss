@@ -1,0 +1,17 @@
+.my-button {
+  border-radius: 100px;
+  padding: 8px;
+  gap: 10px;
+  background-color: $light-orange;
+  border: none;
+}
+
+.my-button:target {
+  background-color: $orange;
+}
+
+.my-button-show {
+  width: 80px;
+  font-size: 12px;
+  padding: 6px;
+}

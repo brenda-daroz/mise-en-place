@@ -1,21 +1,26 @@
-link_to
-
-<%= image_tag @recipe.image %>
-<h1><%= @recipe.title %></h1>
-
-<div
-  data-controller="ingredients"
-  data-ingredients-recipe-id-value="<%= @recipe.id %>"
->
-  <div data-ingredients-target="ingredientsList">
-    <%= render "ingredients", ingredients: ingredients, measurement: measurement %>
-  </div>
+<div class="show-header">
+  <%= link_to "#{image_tag("icons/go_back.svg")}".html_safe,
+  root_path,
+  class: "show-back-button" %>
+  <%= image_tag @recipe.image, class: "recipe-img" %>
 </div>
 
-<h4>Steps</h4>
-<ul>
-  <% @recipe.steps.each_with_index do |step| %>
-    <li><%= step.number %>.
-      <%= step.step %></li>
-  <% end %>
-</ul>
+<div class="show-main">
+  <h1 class="show-title"><%= @recipe.title %></h1>
+  <div
+    data-controller="ingredients"
+    data-ingredients-recipe-id-value="<%= @recipe.id %>"
+  >
+    <div data-ingredients-target="ingredientsList">
+      <%= render "ingredients", ingredients: ingredients, measurement: measurement %>
+    </div>
+  </div>
+
+  <h4>Steps</h4>
+  <ul>
+    <% @recipe.steps.each_with_index do |step| %>
+      <li><%= step.number %>.
+        <%= step.step %></li>
+    <% end %>
+  </ul>
+</div>
