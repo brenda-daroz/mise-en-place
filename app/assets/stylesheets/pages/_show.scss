@@ -1,0 +1,28 @@
+.show-header {
+  border: 1px solid black;
+  width: 100%;
+  position: relative;
+
+}
+
+.show-back-button {
+  position: absolute;
+  padding: 20px;
+}
+
+.show-header img {
+  width: inherit;
+}
+
+.show-main {
+  margin: 0 20px;
+}
+
+.buttons-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.show-title {
+  margin: 30px 20px 30px 0px;
+}
