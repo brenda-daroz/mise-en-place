@@ -33,16 +33,18 @@
     background: transparent;
   }
 
-  input[type="submit"] {
+  // input[type="submit"] {
 
-    width: 100%;
-    border-bottom: none;
-    border-radius: 4px;
-    cursor: pointer;
-    background: #DB6C2D;
-    color: white;
-    margin-bottom: 10px;
-  }
+  //   width: 100%;
+  //   border-radius: 100px;
+  //   padding: 8px;
+  //   border-bottom: none;
+  //   border-radius: 4px;
+  //   cursor: pointer;
+  //   background: #DB6C2D;
+  //   color: white;
+  //   margin-bottom: 10px;
+  // }
 
 
   .form-inputs div {
@@ -59,8 +61,12 @@
   transition: .5s;
   }
 
-  input:focus ~.float,
-  input:valid ~.float
+  input[type="email"]:focus ~.float,
+  input[type="email"]:valid ~.float,
+  input[type="password"]:focus ~.float,
+  input[type="password"]:valid ~.float,
+  input[type="password_confirmation"]:focus ~.float,
+  input[type="password_confirmation"]:valid ~.float
  {
   top: -12px;
   left: 0;
@@ -70,8 +76,12 @@
 
 }
 
-  input:focus,
-  input:valid
+input[type="email"]:focus,
+input[type="email"]:valid,
+input[type="password"]:focus,
+input[type="password"]:valid,
+input[type="password_confirmation"]:focus,
+input[type="password_confirmation"]:valid
   {
     border-bottom: 2px solid #DB6C2D;
   }
@@ -80,7 +90,7 @@
   #user_remember_me
    {
     border: .2px solid #CAC4C0;
-    background-color: #FAF1EC;
+    background-color: #DB6C2D;
   }
 
   .shared-links {
