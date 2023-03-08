@@ -5,7 +5,7 @@ class FavouritesController < ApplicationController
   end
 
   def create
-    @favo = Favorite.new
+    @favo = Favourite.new
     @favo.user = current_user
     @favo.recipe = Recipe.find(params[:recipe_id])
     @favo.save
