@@ -25,7 +25,7 @@ class RecipesController < ApplicationController
         }
       elsif measurement == "eu"
         {
-          amount: ingredient.measurement_eu_amount,
+          amount: ingredient.measurement_eu_amount.round(0),
           unit: ingredient.measurement_eu_unit,
           name: ingredient.ingredient.name
         }

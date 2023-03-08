@@ -19,4 +19,9 @@ export default class extends Controller {
         this.ingredientsListTarget.innerHTML = data
       })
   }
+
+  changePortion(e) {
+    console.log("button clicked")
+  }
+
 }
