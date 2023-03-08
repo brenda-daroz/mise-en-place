@@ -1,0 +1,25 @@
+<button data-action="click->ingredients#changePortion">Portion</button>
+<button
+  class="<%= measurement == "us" ? "active" : "" %>"
+  data-action="click->ingredients#changeUnits"
+  data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: "us") %>"
+>US</button>
+<button
+  class="<%= measurement == "eu" ? "active" : "" %>"
+  data-action="click->ingredients#changeUnits"
+  data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: "eu")%>"
+>Metric</button>
+<h4>Ingredients</h4>
+
+<ul>
+  <% ingredients.each do |ingredient| %>
+    <li class="recipe-ingredients">
+
+      <%= ingredient[:amount] %>
+
+      <%= ingredient[:unit] %>
+
+      <%= ingredient[:name].capitalize %>
+    </li>
+  <% end %>
+</ul>
