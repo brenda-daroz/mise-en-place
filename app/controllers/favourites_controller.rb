@@ -1,7 +1,7 @@
 class FavouritesController < ApplicationController
 
   def index
-    @favorites = Favorite.where(user: current_user)
+    @favourites = Favourite.where(user: current_user)
   end
 
   def create
@@ -11,7 +11,9 @@ class FavouritesController < ApplicationController
     @favo.save
   end
 
-  def del
+  def destroy
+    @favo = Review.find(params[:id])
+    @favo.destroy
   end
 
 end
