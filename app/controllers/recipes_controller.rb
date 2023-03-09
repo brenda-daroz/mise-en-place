@@ -2,17 +2,40 @@ class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    if params[:vegan].present?
-      if params[:query].present?
-        @recipes = Recipe.where(vegan: true).global_search(params[:query])
-      else
-        @recipes = Recipe.where(vegan: true)
-      end
-    elsif params[:query].present?
+    # @recipes = Recipe.all
+
+
+
+    if params[:query].present?
       @recipes = Recipe.global_search(params[:query])
+    elsif params.keys.length == 4
+      if params[:vegan] == "true"
+        @recipes = Recipe.where(vegan: true).global_search(params[:query])
+      elsif params[:veggie] == "true"
+        @recipes = Recipe.where(vegetarian: true).global_search(params[:query])
+      elsif params[:meat] == "true"
+        @recipes = Recipe.where.not(vegan: true).where.not(vegetarian: true).global_search(params[:query])
+      elsif params.keys.length == 3
+        if params[:vegan] == "true"
+          @recipes = Recipe.where(vegan: true)
+        elsif params[:veggie] == "true"
+          @recipes = Recipe.where(vegetarian: true)
+        elsif params[:meat] == "true"
+          @recipes = Recipe.where.not(vegan: true).where.not(vegetarian: true)
+        end
+      end 
     else
-      @recipes = Recipe.all
+    @recipes = Recipe.all
     end
+
+    # @recipes = Recipe.where(vegan: true) if params[:vegan] == "true"
+    # @recipes = Recipe.where(vegan: true).global_search(params[:query]) if params[:vegan] == "true" && params[:query].present?
+    # @recipes = Recipe.where(vegetarian: true) if params[:veggie] == "true"
+    # @recipes = Recipe.where(vegetarian: true).global_search(params[:query]) if params[:veggie] == "true" && params[:query].present?
+    # @recipes = Recipe.where.not(vegan: true).where.not(vegetarian: true) if params[:meat] == "true"
+    # @recipes = Recipe.where.not(vegan: true).where.not(vegetarian: true).global_search(params[:query]) if params[:meat] == "true" && params[:query].present?
+    # @recipes = Recipe.global_search(params[:query]) if params[:query].present?
+
   end
 
   def show
