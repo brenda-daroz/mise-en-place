@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  root to: "pages#home"
+  root to: "recipes#index"
   resources :pages, only: [:home]
 
   resources :recipes, only: %i[index show] do
@@ -11,7 +11,5 @@ Rails.application.routes.draw do
     resources :favourites, only: [:create]
   end
 
-  resources :favourites, only: [:delete, :index]
+  resources :favourites, only: %i[delete index]
 end
-
-
