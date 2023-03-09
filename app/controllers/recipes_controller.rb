@@ -2,18 +2,18 @@ class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    binding.pry
-    if params.dig(:search, :query) && params.dig(:search, :category)
-      stored_catagories = params[:search][:category].drop(1)
-      @recipes = Recipe.global_search(params[:search][:query])
-    elsif params.dig(:search, :query)
-      @recipes = Recipe.global_search(params[:search][:query])
-    else
-      @recipes = Recipe.all
-      @recipes = Recipe.all
-    end
+    categories = params.dig(:search, :category)&.drop(1) || []
+    @recipes = []
+    categories.each { |category| @recipes += Recipe.public_send(category) }
+    @recipes = Recipe.all if categories.empty?
+    filter_by_global
+  end
 
-
+  def filter_by_global
+    return unless params.dig(:search, :query).present?
+    recipe_ids = @recipes.map(&:id)
+    @recipes = Recipe.where(id: recipe_ids)
+    @recipes = @recipes.global_search(params[:search][:query])
   end
 
   def cook
