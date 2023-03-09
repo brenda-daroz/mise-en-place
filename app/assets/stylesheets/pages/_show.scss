@@ -5,16 +5,22 @@
   z-index: -1;
 }
 
+.favorite-back-button {
+  z-index: 1000;
+}
+
 .show-back-button {
   position: absolute;
   padding: 20px;
+  z-index: 1000;
 }
 
 .show-favorite-button {
   position: absolute;
   padding: 20px;
   top: 0;
-  right: 0
+  right: 0;
+  z-index: 1000;
 }
 
 .show-header img {
