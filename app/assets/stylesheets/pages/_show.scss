@@ -1,5 +1,5 @@
 .show-header {
-  border: 1px solid black;
+  // border: 1px solid black;
   width: 100%;
   position: relative;
 
@@ -8,6 +8,13 @@
 .show-back-button {
   position: absolute;
   padding: 20px;
+}
+
+.show-favorite-button {
+  position: absolute;
+  padding: 20px;
+  top: 0;
+  right: 0
 }
 
 .show-header img {
@@ -21,6 +28,7 @@
 .buttons-wrapper {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .show-title {

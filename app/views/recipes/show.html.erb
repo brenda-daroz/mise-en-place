@@ -1,7 +1,12 @@
 <div class="show-header">
-  <%= link_to "#{image_tag("icons/go_back.svg")}".html_safe,
-  recipes_path,
-  class: "show-back-button" %>
+  <div class="favorite-back-button">
+    <%= link_to "#{image_tag("icons/go_back.svg")}".html_safe,
+    recipes_path,
+    class: "show-back-button" %>
+    <%= link_to "#{image_tag("icons/favorite.svg")}".html_safe,
+    recipe_favourites_path(recipe_id: @recipe.id),
+    class: "show-favorite-button" %>
+  </div>
   <%= image_tag @recipe.image, class: "recipe-img" %>
 </div>
 
