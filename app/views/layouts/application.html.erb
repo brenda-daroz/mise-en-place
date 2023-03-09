@@ -13,7 +13,10 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body data-controller="page-orientation" data-page-orientation-target="body">
+  <body
+    <%# data-controller="page-orientation" %>
+    <%# data-page-orientation-target="body" %>
+  >
     <%= render "shared/navbar_bottom" %>
     <%= render "shared/flashes" %>
     <p class="notice"><%= notice %></p>

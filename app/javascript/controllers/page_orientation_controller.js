@@ -2,16 +2,20 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="page-orientation"
 export default class extends Controller {
-  static targets = ["body"]
+  static targets = ["fullscreen"]
   connect() {
-    console.log(this.bodyTarget)
+    this.fullscreenTarget.addEventListener("fullscreenchange", () => {
+      if (document.fullscreenElement) {
+        this.fullscreenTarget.classList.remove('cooking-mode-hidden')
+      } else
+        this.fullscreenTarget.classList.add('cooking-mode-hidden')
+    })
   }
 
   changeOrientation() {
     console.log("hello from stimulus orientation")
 
-    const body = this.bodyTarget;
-    body.requestFullscreen()
+    this.fullscreenTarget.requestFullscreen()
     screen.orientation.lock("landscape")
   }
 }
