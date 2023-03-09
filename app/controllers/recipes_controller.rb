@@ -4,7 +4,6 @@ class RecipesController < ApplicationController
   def index
     # @recipes = Recipe.all
 
-
     if params[:query].present?
       @recipes = Recipe.global_search(params[:query])
     elsif params.keys.length == 4
@@ -24,7 +23,7 @@ class RecipesController < ApplicationController
         end
       end
     else
-    @recipes = Recipe.all
+      @recipes = Recipe.all
     end
 
     # @recipes = Recipe.where(vegan: true) if params[:vegan] == "true"
@@ -34,7 +33,6 @@ class RecipesController < ApplicationController
     # @recipes = Recipe.where.not(vegan: true).where.not(vegetarian: true) if params[:meat] == "true"
     # @recipes = Recipe.where.not(vegan: true).where.not(vegetarian: true).global_search(params[:query]) if params[:meat] == "true" && params[:query].present?
     # @recipes = Recipe.global_search(params[:query]) if params[:query].present?
-
   end
 
   def show
