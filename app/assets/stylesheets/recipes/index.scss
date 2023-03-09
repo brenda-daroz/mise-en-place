@@ -2,6 +2,7 @@
   border-radius: 12px;
   border-color: #D1CBC8;
   margin: 20px 30px;
+  position: relative;
 }
 
 .card-title {
@@ -9,6 +10,14 @@
   font-size: 18px;
   text-decoration: none;
   padding: 10px 50px 15px 20px;
+}
+
+.card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 img {
@@ -39,7 +48,6 @@ h1 {
 
 .active {
   color: green;
-
 }
 
 .inactive {
