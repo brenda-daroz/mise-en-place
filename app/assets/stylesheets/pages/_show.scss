@@ -32,5 +32,31 @@
 }
 
 .show-title {
+  padding: 0;
   margin: 30px 20px 30px 0px;
+}
+
+.show-steps {
+
+  ul {
+    li {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+/* Ripple effect */
+.ripple {
+  background-position: center;
+  transition: 0.5s;
+}
+
+.ripple:hover {
+  background: $light-orange radial-gradient(circle, transparent 1%, $orange 1%) center/15000%;
+}
+
+.ripple:active {
+  background-color: $light-orange;
+  background-size: 100%;
+  transition: 0s;
 }

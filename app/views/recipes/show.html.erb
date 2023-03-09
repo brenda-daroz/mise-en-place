@@ -22,10 +22,12 @@
   </div>
 
   <h4>Steps</h4>
+  <div class="show-steps">
   <ul>
     <% @recipe.steps.each_with_index do |step| %>
       <li><%= step.number %>.
         <%= step.step %></li>
     <% end %>
   </ul>
+  </div>
 </div>
