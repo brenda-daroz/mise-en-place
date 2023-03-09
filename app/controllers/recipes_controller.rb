@@ -2,37 +2,21 @@ class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show ingredients]
 
   def index
-    # @recipes = Recipe.all
+    categories = params.dig(:search, :category)&.drop(1) || []
+    @recipes = []
+    categories.each { |category| @recipes += Recipe.public_send(category) }
+    @recipes = Recipe.all if categories.empty?
+    filter_by_global
+  end
 
-    if params[:query].present?
-      @recipes = Recipe.global_search(params[:query])
-    elsif params.keys.length == 4
-      if params[:vegan] == "true"
-        @recipes = Recipe.where(vegan: true).global_search(params[:query])
-      elsif params[:veggie] == "true"
-        @recipes = Recipe.where(vegetarian: true).global_search(params[:query])
-      elsif params[:meat] == "true"
-        @recipes = Recipe.where.not(vegan: true).where.not(vegetarian: true).global_search(params[:query])
-      elsif params.keys.length == 3
-        if params[:vegan] == "true"
-          @recipes = Recipe.where(vegan: true)
-        elsif params[:veggie] == "true"
-          @recipes = Recipe.where(vegetarian: true)
-        elsif params[:meat] == "true"
-          @recipes = Recipe.where.not(vegan: true).where.not(vegetarian: true)
-        end
-      end
-    else
-      @recipes = Recipe.all
-    end
+  def filter_by_global
+    return unless params.dig(:search, :query).present?
+    recipe_ids = @recipes.map(&:id)
+    @recipes = Recipe.where(id: recipe_ids)
+    @recipes = @recipes.global_search(params[:search][:query])
+  end
 
-    # @recipes = Recipe.where(vegan: true) if params[:vegan] == "true"
-    # @recipes = Recipe.where(vegan: true).global_search(params[:query]) if params[:vegan] == "true" && params[:query].present?
-    # @recipes = Recipe.where(vegetarian: true) if params[:veggie] == "true"
-    # @recipes = Recipe.where(vegetarian: true).global_search(params[:query]) if params[:veggie] == "true" && params[:query].present?
-    # @recipes = Recipe.where.not(vegan: true).where.not(vegetarian: true) if params[:meat] == "true"
-    # @recipes = Recipe.where.not(vegan: true).where.not(vegetarian: true).global_search(params[:query]) if params[:meat] == "true" && params[:query].present?
-    # @recipes = Recipe.global_search(params[:query]) if params[:query].present?
+  def cook
   end
 
   def show
