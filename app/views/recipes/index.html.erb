@@ -1,32 +1,16 @@
 <h1>Mise en place</h1>
 
-<%= form_with url: recipes_path, method: :get, class: "d-flex" do |form| %>
 
-  <%= text_field_tag :query,
-  params[:query],
-  id: "search-bar",
-  placeholder: "Find a recipe" %>
-  <%= button_tag "search", type: "submit", class: "searchbutton" do %>
-    <i class="fa-solid fa-magnifying-glass"></i>
-  <% end %>
-<% end %>
-
-<% if params[:vegan] == 'true' %>
-  <%= link_to "Vegan", recipes_path(:vegan => false), class: "active" %>
-<% else %>
-  <%= link_to "Vegan", recipes_path(:vegan => true), class: "inactive" %>
-<% end %>
-
-<% if params[:veggie] == 'true' %>
-  <%= link_to "Vegeterian", recipes_path(:veggie => false), class: "active" %>
-<% else %>
-  <%= link_to "Vegeterian", recipes_path(:veggie => true), class: "inactive" %>
-<% end %>
-
-<% if params[:meat] == 'true' %>
-  <%= link_to "Meat", recipes_path(:meat => false), class: "active" %>
-<% else %>
-  <%= link_to "Meat", recipes_path(:meat => true), class: "inactive" %>
+<%= simple_form_for :search, url: recipes_path, method: "GET", html: { class: '' } do |f| %>
+  <div class="search-container">
+    <%= f.input :query, input_html: { id:'search-bar', value: params.dig(:search, :query) }, placeholder: "Find a recipe", label:false %>
+    <%= button_tag type: 'submit', class: "searchbutton" do %>
+      <i class="fa-solid fa-magnifying-glass"></i>
+    <% end %>
+  </div>
+  <%= f.input :category, as: :check_boxes,  input_html: { class: "tag-selector" }, legend_tag:false,
+                  item_wrapper_class: 'tag-item', collection: [["Vegan", "vegan"], ["Vegeterian", "vegetarian"], ["Meat", "meat"]] %>
+  <%= f.submit "Filter", id:'filter-button' %>
 <% end %>
 
 
