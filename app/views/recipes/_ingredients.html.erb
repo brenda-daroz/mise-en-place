@@ -1,21 +1,4 @@
-<div data-controller="page-orientation">
-  <div
-    data-page-orientation-target="fullscreen"
-    class="cooking-mode-hidden cooking-mode"
-  >
-    <ul>
-      <% ingredients.each do |ingredient| %>
-        <li class="recipe-ingredients">
-
-          <%= ingredient[:amount] %>
-
-          <%= ingredient[:unit] %>
-
-          <%= ingredient[:name].capitalize %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+<%= render "cook", ingredients: ingredients %>
   <div class="buttons-wrapper">
     <button
       class="my-button my-button-show my-button-show-cook"
