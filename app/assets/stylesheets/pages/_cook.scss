@@ -1,0 +1,33 @@
+.cooking-mode::backdrop {
+  background-color: rgb(255, 255, 255);
+}
+
+.cooking-mode-hidden {
+  display: none;
+}
+
+.cooking-mode {
+  overflow-y: auto;
+
+}
+
+.cooking-mode ul {
+  margin: 50px 20px !important;
+}
+
+.cooking-mode-wrapper {
+  display: flex;
+}
+
+.cooking-mode-steps {
+  width: 60%;
+  overflow-y: scroll;
+}
+
+.cooking-mode-ingredients {
+  position: fixed;
+  top: 0;
+  right: 0;
+  overflow-y: scroll;
+  max-height: 100%;
+}
