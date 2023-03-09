@@ -8,7 +8,6 @@
 
 .cooking-mode {
   overflow-y: auto;
-
 }
 
 .cooking-mode ul {
@@ -20,8 +19,14 @@
 }
 
 .cooking-mode-steps {
-  width: 60%;
+  width: 65vw;
   overflow-y: scroll;
+
+  ul {
+    li {
+      margin-bottom: 20px;
+    }
+  }
 }
 
 .cooking-mode-ingredients {
@@ -30,4 +35,7 @@
   right: 0;
   overflow-y: scroll;
   max-height: 100%;
+  width: 35vw;
+  background-color: $light-orange;
+  line-height: 1.5em;
 }
