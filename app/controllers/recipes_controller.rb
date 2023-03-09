@@ -1,9 +1,8 @@
 class RecipesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show]
+  skip_before_action :authenticate_user!, only: %i[index show ingredients]
 
   def index
     # @recipes = Recipe.all
-
 
 
     if params[:query].present?
@@ -23,7 +22,7 @@ class RecipesController < ApplicationController
         elsif params[:meat] == "true"
           @recipes = Recipe.where.not(vegan: true).where.not(vegetarian: true)
         end
-      end 
+      end
     else
     @recipes = Recipe.all
     end
