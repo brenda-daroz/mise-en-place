@@ -1,5 +1,4 @@
-<h1>Favo</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Welcome</h1>
 
 <% @favourites.each do |favourite| %>
   <div class="card">
@@ -8,4 +7,3 @@
     <%= link_to favourite.recipe.title, recipe_path(favourite.recipe), class: "card-title" %>
   </div>
 <% end %>
-

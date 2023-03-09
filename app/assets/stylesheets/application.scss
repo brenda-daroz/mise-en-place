@@ -12,4 +12,11 @@
 @import "pages/index";
 @import "pages/show";
 @import "recipes/index";
-@import "pages/cook"
+@import "pages/cook";
+
+
+html,
+body {
+  padding-bottom: 30px;
+  scroll-behavior: smooth;
+}
