@@ -10,15 +10,15 @@ class FavouritesController < ApplicationController
   end
 
   def create
-    @favourite = Favourite.new(favourite_params)
-    @favourite.user = current_user
     @recipe = Recipe.find(params[:recipe_id])
+    @favourite = Favourite.new
+    @favourite.user = current_user
     @favourite.recipe = @recipe
     @favourite.save
   end
 
   def destroy
-    @favourite = Review.find(params[:id])
+    @favourite = Favourite.find(params[:id])
     @favourite.destroy
   end
 
