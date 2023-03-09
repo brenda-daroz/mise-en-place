@@ -37,6 +37,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @favourite = Favourite.new
 
     render locals: { measurement: "eu", ingredients: x("eu") }
   end
