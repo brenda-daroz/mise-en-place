@@ -1,0 +1,31 @@
+<div data-controller="page-orientation">
+  <div
+    data-page-orientation-target="fullscreen"
+    class="cooking-mode-hidden cooking-mode"
+  >
+    <div class="cooking-mode-wrapper">
+      <div class="cooking-mode-steps">
+        <ul>
+          <% @recipe.steps.each_with_index do |step| %>
+            <li><%= step.number %>.
+              <%= step.step %></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="cooking-mode-ingredients">
+        <ul>
+          <% ingredients.each do |ingredient| %>
+            <li class="recipe-ingredients">
+
+              <%= ingredient[:amount] %>
+
+              <%= ingredient[:unit] %>
+
+              <%= ingredient[:name].capitalize %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>

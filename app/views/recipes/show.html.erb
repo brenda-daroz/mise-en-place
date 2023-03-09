@@ -1,26 +1,39 @@
-<div class="show-header">
-  <%= link_to "#{image_tag("icons/go_back.svg")}".html_safe,
-  recipes_path,
-  class: "show-back-button" %>
-  <%= image_tag @recipe.image, class: "recipe-img" %>
-</div>
+<div class="show-wrapper">
+  <div class="favorite-back-button">
+    <%= link_to "#{image_tag("icons/go_back.svg")}".html_safe,
+    recipes_path,
+    class: "show-back-button" %>
+    <%= link_to "#{image_tag("icons/favorite.svg")}".html_safe,
+    recipe_favourites_path(recipe_id: @recipe.id),
+    data: {
+      "turbo-method": :post
+    },
+    class: "show-favorite-button" %>
+  </div>
+  <div class="show-header">
 
-<div class="show-main">
-  <h1 class="show-title"><%= @recipe.title %></h1>
-  <div
-    data-controller="ingredients"
-    data-ingredients-recipe-id-value="<%= @recipe.id %>"
-  >
-    <div data-ingredients-target="ingredientsList">
-      <%= render "ingredients", ingredients: ingredients, measurement: measurement %>
-    </div>
+    <%= image_tag @recipe.image, class: "recipe-img" %>
   </div>
 
-  <h4>Steps</h4>
-  <ul>
-    <% @recipe.steps.each_with_index do |step| %>
-      <li><%= step.number %>.
-        <%= step.step %></li>
-    <% end %>
-  </ul>
+  <div class="show-main">
+    <h1 class="show-title"><%= @recipe.title %></h1>
+    <div
+      data-controller="ingredients"
+      data-ingredients-recipe-id-value="<%= @recipe.id %>"
+    >
+      <div data-ingredients-target="ingredientsList">
+        <%= render "ingredients", ingredients: ingredients, measurement: measurement %>
+      </div>
+    </div>
+
+    <h4>Steps</h4>
+    <div class="show-steps">
+      <ul>
+        <% @recipe.steps.each_with_index do |step| %>
+          <li><%= step.number %>.
+            <%= step.step %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>

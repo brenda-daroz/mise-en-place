@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show]
+  skip_before_action :authenticate_user!, only: %i[index show ingredients]
 
   def index
     categories = params.dig(:search, :category)&.drop(1) || []
@@ -21,6 +21,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @favourite = Favourite.new
 
     render locals: { measurement: "eu", ingredients: x("eu") }
   end
