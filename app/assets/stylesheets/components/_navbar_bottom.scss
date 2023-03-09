@@ -8,6 +8,8 @@
   border: 1px solid #DB6C2D;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  z-index: 100;
+
 
 }
 
@@ -20,4 +22,5 @@
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  z-index: 1100;
 }

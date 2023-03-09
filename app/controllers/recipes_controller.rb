@@ -22,11 +22,11 @@ class RecipesController < ApplicationController
           @recipes = Recipe.where(vegetarian: true)
         elsif params[:meat] == "true"
           @recipes = Recipe.where.not(vegan: true).where.not(vegetarian: true)
-      end
-    end
-  else
+        end
+      end 
+    else
     @recipes = Recipe.all
-  end
+    end
 
     # @recipes = Recipe.where(vegan: true) if params[:vegan] == "true"
     # @recipes = Recipe.where(vegan: true).global_search(params[:query]) if params[:vegan] == "true" && params[:query].present?
@@ -36,6 +36,9 @@ class RecipesController < ApplicationController
     # @recipes = Recipe.where.not(vegan: true).where.not(vegetarian: true).global_search(params[:query]) if params[:meat] == "true" && params[:query].present?
     # @recipes = Recipe.global_search(params[:query]) if params[:query].present?
 
+  end
+
+  def cook
   end
 
   def show
@@ -71,9 +74,4 @@ class RecipesController < ApplicationController
       end
     end
   end
-
-
-  private
-
-
 end
