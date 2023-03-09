@@ -11,24 +11,12 @@
   <% end %>
 <% end %>
 
-<% if params[:vegan] == 'true' %>
-  <%= link_to "Vegan", recipes_path(:vegan => false), class: "active" %>
-<% else %>
-  <%= link_to "Vegan", recipes_path(:vegan => true), class: "inactive" %>
+<%= simple_form_for :search, url: recipes_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+  <%= f.input :query %>
+  <%= f.input :category, as: :check_boxes,  input_html: { class: "tag-selector" },
+                  item_wrapper_class: 'tag-item', collection: ["Vegan", "Vegeterian", "Meat"] %>
+  <%= f.submit %>
 <% end %>
-
-<% if params[:veggie] == 'true' %>
-  <%= link_to "Vegeterian", recipes_path(:veggie => false), class: "active" %>
-<% else %>
-  <%= link_to "Vegeterian", recipes_path(:veggie => true), class: "inactive" %>
-<% end %>
-
-<% if params[:meat] == 'true' %>
-  <%= link_to "Meat", recipes_path(:meat => false), class: "active" %>
-<% else %>
-  <%= link_to "Meat", recipes_path(:meat => true), class: "inactive" %>
-<% end %>
-
 
 <% @recipes.each do |recipe| %>
   <div class="card">

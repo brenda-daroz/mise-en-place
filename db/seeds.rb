@@ -42,8 +42,8 @@ results.each do |result|
 
   title = result["title"]
   summary = result["summary"]
-  vegetarian = result["vegetarian"]
-  vegan = result["vegan"]
+  vegetarian = result["vegetarian"] ? "vegetarian" : "not"
+  vegan = result["vegan"] ? "vegan" : "not"
   image = result["image"]
   servings = result["servings"]
   ready_in_minutes = result["readyInMinutes"]
