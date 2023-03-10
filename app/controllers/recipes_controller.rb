@@ -22,6 +22,11 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+
+    @favourite = @recipe.favourites.find_by(user: current_user)
+    unless @favourite
+      @favourite = Favourite.new
+    end
     @favourite = Favourite.new
     @factor = params[:factor] || 1
 

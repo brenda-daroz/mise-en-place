@@ -11,5 +11,5 @@ Rails.application.routes.draw do
     resources :favourites, only: %i[new create]
   end
 
-  resources :favourites, only: %i[delete index]
+  resources :favourites, only: %i[destroy index]
 end
