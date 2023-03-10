@@ -6,12 +6,12 @@
     >Cook</button>
     <div class="buttons-wrapper-options">
        <button
-        class="my-button my-button-show ripple dropdown show"
+        class="my-button my-button-show"
         data-action="click->ingredients#changePortion"
         data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: measurement, factor: 1) %>"
       >1x</button>
       <button
-        class="my-button my-button-show ripple dropdown show"
+        class="my-button my-button-show"
         data-action="click->ingredients#changePortion"
         data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: measurement, factor: 2) %>"
       >2x</button>
