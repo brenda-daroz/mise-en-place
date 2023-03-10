@@ -24,11 +24,10 @@
 
   </div>
   <div class="show-header">
-
     <%= image_tag @recipe.image, class: "recipe-img" %>
   </div>
 
-  <div class="show-main">
+  <div class="show-main section">
     <h1 class="show-title"><%= @recipe.title %></h1>
     <div
       data-controller="ingredients"
@@ -49,4 +48,5 @@
       </ul>
     </div>
   </div>
+
 </div>

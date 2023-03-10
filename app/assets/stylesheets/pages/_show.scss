@@ -1,8 +1,38 @@
+$scroll-factor : .4;
+
+// parallax effect
+
+.show-wrapper {
+  height: 100vh;
+  max-height: 100%;
+  overflow-x: hidden;
+  perspective: 1px;
+  perspective-origin: center top;
+  transform-style: preserve-3d;
+}
+
 .show-header {
-  // border: 1px solid black;
-  width: 100%;
+  height: 30vh;
+  background-size: cover;
   position: relative;
-  z-index: -1;
+  object-fit: cover;
+  transform-origin: center top;
+  transform: translateZ(-#{$scroll-factor * 1.4}px) scale(1 + $scroll-factor * 2);
+}
+
+.section {
+  min-height: 100vh;
+  background: white;
+  transform: translateZ(0);
+  padding: 10px 0;
+}
+
+// buttons
+
+.buttons-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .favorite-back-button {
@@ -30,10 +60,18 @@
   }
 }
 
-.show-header img {
-  width: inherit;
+// header-img
+
+.show-header {
+  width: 100%;
 }
 
+.show-header img {
+  width: inherit;
+  height: 40vh;
+}
+
+// main-content
 .show-main {
   margin-top: -25px;
   z-index: 1;
@@ -44,11 +82,7 @@
   background-color: white;
 }
 
-.buttons-wrapper {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
+
 
 .show-title {
   padding: 0;
@@ -64,7 +98,8 @@
   }
 }
 
-/* Ripple effect */
+//ripple effect
+
 .ripple {
   background-position: center;
   transition: 0.5s;
