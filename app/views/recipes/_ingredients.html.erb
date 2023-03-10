@@ -5,19 +5,25 @@
       data-action="click->page-orientation#changeOrientation"
     >Cook</button>
     <div class="buttons-wrapper-options">
-      <button
-        class="my-button my-button-show ripple"
+       <button
+        class="my-button my-button-show ripple dropdown show"
         data-action="click->ingredients#changePortion"
-      >Portion</button>
+        data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: measurement, factor: 1) %>"
+      >1x</button>
       <button
-        class="my-button my-button-show ripple <%= measurement == "us" ? "active" : "" %>"
+        class="my-button my-button-show ripple dropdown show"
+        data-action="click->ingredients#changePortion"
+        data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: measurement, factor: 2) %>"
+      >2x</button>
+      <button
+        class="my-button my-button-show <%= measurement == "us" ? "active" : "" %>"
         data-action="click->ingredients#changeUnits"
-        data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: "us") %>"
+        data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: "us", factor: @factor) %>"
       >US</button>
       <button
-        class="my-button my-button-show ripple <%= measurement == "eu" ? "active" : "" %>"
+        class="my-button my-button-show <%= measurement == "eu" ? "active" : "" %>"
         data-action="click->ingredients#changeUnits"
-        data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: "eu")%>"
+        data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: "eu", factor: @factor)%>"
       >Metric</button>
     </div>
   </div>

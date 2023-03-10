@@ -11,6 +11,7 @@ class RecipesController < ApplicationController
 
   def filter_by_global
     return unless params.dig(:search, :query).present?
+
     recipe_ids = @recipes.map(&:id)
     @recipes = Recipe.where(id: recipe_ids)
     @recipes = @recipes.global_search(params[:search][:query])
@@ -22,29 +23,32 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @favourite = Favourite.new
+    @factor = params[:factor] || 1
 
-    render locals: { measurement: "eu", ingredients: x("eu") }
+    render locals: { measurement: "eu", ingredients: handleUnit("eu", @factor) }
   end
 
   def ingredients
     @recipe = Recipe.find(params[:recipe_id])
-
-    render partial: "ingredients", locals: { measurement: params[:measurement], ingredients: x(params[:measurement]) }
+    @factor = params[:factor] || 1
+    render partial: "ingredients",
+           locals: { measurement: params[:measurement],
+                     ingredients: handleUnit(params[:measurement], params[:factor].to_f) }
   end
 
   private
 
-  def x(measurement)
+  def handleUnit(measurement, factor)
     @recipe.recipe_ingredients.map do |ingredient|
       if measurement == "us"
         {
-          amount: ingredient.measurement_us_amount,
+          amount: ingredient.measurement_us_amount.to_f * factor,
           unit: ingredient.measurement_us_unit,
           name: ingredient.ingredient.name
         }
       elsif measurement == "eu"
         {
-          amount: ingredient.measurement_eu_amount.round(0),
+          amount: ingredient.measurement_eu_amount.to_f * factor,
           unit: ingredient.measurement_eu_unit,
           name: ingredient.ingredient.name
         }

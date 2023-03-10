@@ -21,7 +21,10 @@
       data-ingredients-recipe-id-value="<%= @recipe.id %>"
     >
       <div data-ingredients-target="ingredientsList">
-        <%= render "ingredients", ingredients: ingredients, measurement: measurement %>
+        <%= render "ingredients",
+        ingredients: ingredients,
+        measurement: measurement,
+        factor: @factor %>
       </div>
     </div>
 
