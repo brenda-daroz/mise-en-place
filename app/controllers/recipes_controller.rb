@@ -27,9 +27,8 @@ class RecipesController < ApplicationController
     unless @favourite
       @favourite = Favourite.new
     end
-    @favourite = Favourite.new
-    @factor = params[:factor] || 1
 
+    @factor = params[:factor] || 1
     render locals: { measurement: "eu", ingredients: handleUnit("eu", @factor) }
   end
 
