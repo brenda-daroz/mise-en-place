@@ -83,3 +83,6 @@ gem 'pg_search'
 gem 'erb-formatter'
 gem 'faker'
 gem 'pry-byebug'
+
+
+gem 'jquery-rails'

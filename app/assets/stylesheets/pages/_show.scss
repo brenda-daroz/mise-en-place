@@ -17,10 +17,17 @@
 
 .show-favorite-button {
   position: absolute;
-  padding: 20px;
+  padding: 5px 20px 20px 20px;
   top: 0;
   right: 0;
   z-index: 1000;
+  color: $orange;
+  opacity: 0.8;
+  font-size: 50px;
+
+  &:focus {
+    outline: none !important;
+  }
 }
 
 .show-header img {

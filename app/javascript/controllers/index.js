@@ -15,3 +15,6 @@ application.register("ingredients", IngredientsController)
 
 import PageOrientationController from "./page_orientation_controller"
 application.register("page-orientation", PageOrientationController)
+
+import ToggleFavouriteController from "./toggle_favourite_controller"
+application.register("toggle-favourite", ToggleFavouriteController)

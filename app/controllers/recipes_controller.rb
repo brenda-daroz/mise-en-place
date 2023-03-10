@@ -21,7 +21,10 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    @favourite = Favourite.new
+    @favourite = @recipe.favourites.find_by(user: current_user)
+    unless @favourite
+      @favourite = Favourite.new
+    end
 
     render locals: { measurement: "eu", ingredients: x("eu") }
   end

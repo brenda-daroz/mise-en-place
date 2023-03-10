@@ -5,13 +5,21 @@
     class: "show-back-button" %>
 
 
-    <% if Favourite.exists?(user_id: current_user) %>
-      <%= link_to "#{image_tag("icons/favourite.svg")}".html_safe, favourite_path(favourite), data: { "turbo-method": :delete },
-      class: "show-favorite-button" %>
-    <% else %>
-      <%= link_to "#{image_tag("icons/unfavourite.svg")}".html_safe, recipe_favourites_path(recipe_id: @recipe.id), data: { "turbo-method": :post },
-      class: "show-favorite-button" %>
-    <% end %>
+    <div data-controller="toggle-favourite">
+    <div data-toggle-favourite-target="items">
+
+      <% if @favourite.id %>
+        <%= link_to favourite_path(@favourite), data: { turbo_method: :delete  }, class: "show-favorite-button" do %>
+          <i class="fa-solid fa-heart"></i>
+        <% end %>
+      <% else %>
+        <%= link_to recipe_favourites_path(@recipe), data: { turbo_method: :post  }, class: "show-favorite-button" do %>
+          <i class="fa-regular fa-heart"></i>
+        <% end %>
+      <% end %>
+
+      </div>
+    </div>
 
 
   </div>
