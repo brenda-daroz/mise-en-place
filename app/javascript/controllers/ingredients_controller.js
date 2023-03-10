@@ -21,7 +21,11 @@ export default class extends Controller {
   }
 
   changePortion(e) {
-    console.log("button clicked")
+    fetch(e.target.dataset.route)
+      .then((response) => response.text())
+      .then(data => {
+        console.log(data)
+        this.ingredientsListTarget.innerHTML = data
+      })
   }
-
 }
