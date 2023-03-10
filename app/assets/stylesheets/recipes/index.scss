@@ -70,16 +70,17 @@ position: relative;
   padding: 5px;
   padding-right: 16px;
   padding-left: 16px;
-  gap: 10px;
+  // gap: 10px;
   text-align: center;
 }
 
 .tag-item {
   display: inline-block;
+  padding: 4px;
 }
 
 .tag-selector {
-  // position: absolute;
+  position: absolute;
   transform: scale(0);
 }
 
@@ -98,4 +99,11 @@ position: relative;
 .tag-selector:checked+label {
   background-color: $orange !important;
   color: $light-orange !important;
+}
+
+.buttons-container {
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  justify-content: space-between;
 }

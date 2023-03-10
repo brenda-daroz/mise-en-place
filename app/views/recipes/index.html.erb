@@ -8,9 +8,11 @@
       <i class="fa-solid fa-magnifying-glass"></i>
     <% end %>
   </div>
-  <%= f.input :category, as: :check_boxes,  input_html: { class: "tag-selector" }, legend_tag:false,
-                  item_wrapper_class: 'tag-item', collection: [["Vegan", "vegan"], ["Vegeterian", "vegetarian"], ["Meat", "meat"]] %>
-  <%= f.submit "Filter", id:'filter-button' %>
+  <div class="buttons-container">
+    <%= f.input :category, as: :check_boxes,  input_html: { class: "tag-selector" }, legend_tag:false,
+                item_wrapper_class: 'tag-item', collection: [["Vegan", "vegan"], ["Vegeterian", "vegetarian"], ["Meat", "meat"]] %>
+    <div class="tag-item"><%= f.submit "Filter", id:'filter-button' %></div>
+  </div>
 <% end %>
 
 
