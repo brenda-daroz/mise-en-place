@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   resources :pages, only: [:home]
 
   resources :recipes, only: %i[index show] do
-    get 'ingredients/:measurement', to: 'recipes#ingredients', as: :ingredients
+    get 'ingredients/:measurement/:factor', to: 'recipes#ingredients', as: :ingredients
     get 'cook', to: 'recipes#cook', as: :cook
     resources :favourites, only: %i[new create]
   end
 
-  resources :favourites, only: %i[delete index]
+  resources :favourites, only: %i[destroy index]
 end
