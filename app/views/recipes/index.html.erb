@@ -27,6 +27,25 @@
     <% end %>
     <%#= label_tag 'label' %>
     <%= link_to recipe.title, recipe_path(recipe), class: "card-title" %>
-    <%= link_to '', recipe_path(recipe), class: 'card-link'  %>
+    <%#= link_to '', recipe_path(recipe), class: 'card-link'  %>
+
+    
+      <button id="plus-sign" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        +
+      </button>
+
+    <div class="collapse" id="collapseExample">
+        <ul>
+          <% recipe.ingredients.each do |ingredient| %>
+            <li class="recipe-ingredients">
+              <%= ingredient[:amount] %>
+
+              <%= ingredient[:unit] %>
+
+              <%= ingredient[:name].capitalize %>
+            </li>
+          <% end %>
+        </ul>
+    </div>
   </div>
 <% end %>
