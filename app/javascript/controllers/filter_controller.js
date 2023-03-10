@@ -4,16 +4,15 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
 
 
-
+  static targets = ["collapser"]
 
 
   connect() {
     console.log("Hello motto")
   }
 
-  vegantrigger(event) {
-
-
-
+  expander(event) {
+    console.log(event)
+    this.collapserTarget.classList.toggle("show")
   }
 }

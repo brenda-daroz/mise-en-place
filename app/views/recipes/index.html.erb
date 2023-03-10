@@ -22,7 +22,7 @@
 <% end %>
 
 <% @recipes.each do |recipe| %>
-  <div class="card">
+  <div class="card" data-controller="filter">
     <% if recipe.image? %>
       <%= link_to recipe_path(recipe) do %>
         <div class="image-container" style="background-image:url('<%= recipe.image %>');"></div>
@@ -32,15 +32,15 @@
         no image with this recipe
       </p>
     <% end %>
-    
+
     <%#= label_tag 'label' %>
     <div class="link-plus-container">
       <%= link_to recipe.title, recipe_path(recipe), class: "card-title" %>
-      <button id="plus-sign" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <button class="plus-sign" data-action="click->filter#expander">
         +
       </button>
     </div>
-    <div class="collapse" id="collapseExample">
+    <div class="collapse" data-filter-target="collapser">
         <ul>
           <% recipe.ingredients.each do |ingredient| %>
             <li class="recipe-ingredients">
@@ -50,5 +50,4 @@
         </ul>
     </div>
   </div>
-
 <% end %>
