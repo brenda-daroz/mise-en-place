@@ -1,3 +1,6 @@
+<% if current_user.admin? %>
+  <%= link_to "Edit", edit_recipe_path(@recipe) %>
+<% end %>
 <div class="show-wrapper">
   <div class="favorite-back-button">
     <%= link_to "#{image_tag("icons/go_back.svg")}".html_safe,
