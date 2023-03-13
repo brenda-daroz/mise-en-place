@@ -16,10 +16,10 @@ export default class extends Controller {
     console.log("hello from stimulus orientation")
 
     if (this.fullscreenTarget.requestFullscreen) this.fullscreenTarget.requestFullscreen()
-    else if (this.fullscreenTarget.webkitRequestFullscreen) this.fullscreenTarget.webkitRequestFullscreen();
-    else if (this.fullscreenTarget.mozRequestFullScreen) this.fullscreenTarget.mozRequestFullScreen(); // Careful to the capital S
-    else if (this.fullscreenTarget.msRequestFullscreen) this.fullscreenTarget.msRequestFullscreen();
-    else if (this.fullscreenTarget.webkitEnterFullscreen) this.fullscreenTarget.webkitEnterFullscreen();
+    // else if (this.fullscreenTarget.webkitRequestFullscreen) this.fullscreenTarget.webkitRequestFullscreen();
+    // else if (this.fullscreenTarget.mozRequestFullScreen) this.fullscreenTarget.mozRequestFullScreen();
+    // else if (this.fullscreenTarget.msRequestFullscreen) this.fullscreenTarget.msRequestFullscreen();
+    // else if (this.fullscreenTarget.webkitEnterFullscreen) this.fullscreenTarget.webkitEnterFullscreen();
     screen.orientation.lock("landscape")
   }
 }
