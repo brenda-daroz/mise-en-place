@@ -6,22 +6,25 @@ export default class extends Controller {
   static values = {
     recipeId: String
   }
+  // static classes = ["active"]
 
   connect() {
-    console.log("Hello from stimulus")
+    // console.log(this.changeTarget)
   }
 
   changeUnits(e) {
     fetch(e.target.dataset.route)
       .then((response) => response.text())
       .then(data => {
-        console.log(data)
         this.ingredientsListTarget.innerHTML = data
       })
   }
 
   changePortion(e) {
-    console.log("button clicked")
+    fetch(e.target.dataset.route)
+      .then((response) => response.text())
+      .then(data => {
+        this.ingredientsListTarget.innerHTML = data
+      })
   }
-
 }

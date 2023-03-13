@@ -65,6 +65,10 @@ $scroll-factor : .4;
   }
 }
 
+.my-button-show-cook {
+  width: 80px;
+}
+
 // header-img
 
 .show-header {
@@ -101,6 +105,14 @@ $scroll-factor : .4;
       margin-bottom: 20px;
     }
   }
+}
+
+span.ingredient {
+  color: $orange;
+}
+
+span.step {
+  color: $orange;
 }
 
 //ripple effect

@@ -1,3 +1,6 @@
+<% if user_signed_in? && current_user.admin? %>
+  <%= link_to "Edit", edit_recipe_path(@recipe) %>
+<% end %>
 <div class="show-wrapper">
   <div class="favorite-back-button">
     <%= link_to "#{image_tag("icons/go_back.svg")}".html_safe, recipes_path, class: "show-back-button" %>
@@ -14,7 +17,10 @@
       data-controller="ingredients"
       data-ingredients-recipe-id-value="<%= @recipe.id %>">
       <div data-ingredients-target="ingredientsList">
-        <%= render "ingredients", ingredients: ingredients, measurement: measurement %>
+        <%= render "ingredients",
+        ingredients: ingredients,
+        measurement: measurement,
+        factor: @factor %>
       </div>
     </div>
 
@@ -22,7 +28,7 @@
     <div class="show-steps">
       <ul>
         <% @recipe.steps.each_with_index do |step| %>
-          <li><%= step.number %>.
+          <li><span class="step"><%= step.number %>.</span>
             <%= step.step %></li>
         <% end %>
       </ul>

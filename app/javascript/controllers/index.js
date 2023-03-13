@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import ActiveButtonController from "./active_button_controller"
+application.register("active-button", ActiveButtonController)
+
 import FilterController from "./filter_controller"
 application.register("filter", FilterController)
 

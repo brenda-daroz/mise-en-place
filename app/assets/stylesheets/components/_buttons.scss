@@ -11,19 +11,23 @@
 }
 
 .my-button-show {
-  width: 80px;
+  width: 60px;
   font-size: 12px;
   padding: 6px;
 }
 
+.active {
+  background-color: $orange;
+}
+
 .my-button-form {
-    border-radius: 100px;
-    padding: 8px;
-    gap: 10px;
-    background-color: #DB6C2D;
-    border: none;
-    color: white;
-    cursor: pointer;
-    width: 100%;
-    margin-bottom: 10px;
+  border-radius: 100px;
+  padding: 8px;
+  gap: 10px;
+  background-color: #DB6C2D;
+  border: none;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
 }
