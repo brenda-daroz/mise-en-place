@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
 
 
-  static targets = ["collapser"]
+  static targets = ["collapser", "button"]
 
 
   connect() {
@@ -14,5 +14,10 @@ export default class extends Controller {
   expander(event) {
     console.log(event)
     this.collapserTarget.classList.toggle("show")
+    if (this.buttonTarget.innerText === "+") {
+      this.buttonTarget.innerText = "-"
+    } else {
+      this.buttonTarget.innerText = "+"
+    }
   }
 }
