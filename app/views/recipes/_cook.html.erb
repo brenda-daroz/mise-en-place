@@ -4,13 +4,13 @@
     class="cooking-mode-hidden cooking-mode"
   >
     <div class="cooking-mode-wrapper">
-      <div class="cooking-mode-steps">
-        <ul>
-          <% @recipe.steps.each_with_index do |step| %>
-            <li><%= step.number %>.
-              <%= step.step %></li>
-          <% end %>
-        </ul>
+      <div class="cooking-mode-steps scroller">
+        <% @recipe.steps.each_with_index do |step| %>
+          <section>
+            <%= step.number %>.
+            <%= step.step %>
+          </section>
+        <% end %>
       </div>
 
       <div class="cooking-mode-ingredients">
@@ -20,7 +20,7 @@
 
               <%= ingredient[:amount] %>
 
-              <%= ingredient[:unit] %>
+              <%= ingredient[:unit].capitalize == "G" ? "Grams" : ingredient[:unit].capitalize %>
 
               <%= ingredient[:name].capitalize %>
             </li>
