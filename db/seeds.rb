@@ -18,9 +18,10 @@ User.destroy_all
 puts 'Creating 10 fake users...'
 10.times do
   User.create(
-    email: "#{Faker::Name.first_name}@gmail.com",
-    password: "123456"
-  )
+  email: "#{Faker::Name.first_name}@gmail.com",
+  password: "123456",
+  username: "#{Faker::Name.first_name}",
+)
 end
 
 def api_key

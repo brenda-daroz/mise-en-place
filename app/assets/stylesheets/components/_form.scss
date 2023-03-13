@@ -20,7 +20,8 @@
 
   input[type="email"],
   input[type="password"],
-  input[type="password_confirmation"]
+  input[type="password_confirmation"],
+  input[type="username"]
    {
     padding: 10px 0;
     margin-bottom: 30px;
@@ -66,7 +67,9 @@
   input[type="password"]:focus ~.float,
   input[type="password"]:valid ~.float,
   input[type="password_confirmation"]:focus ~.float,
-  input[type="password_confirmation"]:valid ~.float
+  input[type="password_confirmation"]:valid ~.float,
+  input[type="username"]:focus ~.float,
+  input[type="username"]:valid ~.float
  {
   top: -12px;
   left: 0;
@@ -81,7 +84,9 @@ input[type="email"]:valid,
 input[type="password"]:focus,
 input[type="password"]:valid,
 input[type="password_confirmation"]:focus,
-input[type="password_confirmation"]:valid
+input[type="password_confirmation"]:valid,
+input[type="username"]:focus,
+input[type="username"]:valid
   {
     border-bottom: 2px solid #DB6C2D;
   }
