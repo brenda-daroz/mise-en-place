@@ -17,7 +17,7 @@ User.destroy_all
 
 puts "creating default admin user"
 
-User.create(
+admin = User.create(
   email: "admin@test.com",
   password: "123456",
   username: "admin",
@@ -66,7 +66,7 @@ results.each do |result|
     servings: servings,
     readyInMinutes: ready_in_minutes,
     category: category,
-    user_id: User.where(username: "admin")
+    user: admin
   )
   recipe.save!
 
