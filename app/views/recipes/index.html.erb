@@ -33,7 +33,7 @@
       </p>
     <% end %>
 
-    <%#= label_tag 'label' %>
+    <%= label_tag 'label', nil, class: "label" %>
     <div class="link-plus-container">
       <%= link_to recipe.title, recipe_path(recipe), class: "card-title" %>
       <button class="plus-sign" data-action="click->filter#expander">

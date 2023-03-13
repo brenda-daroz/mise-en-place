@@ -18,17 +18,29 @@
   font-size: 38px;
 }
 
-// img {
-//   border-radius: 12px 12px 0px 0px;
-// }
-
 .image-container {
-    width: 100%;
-    height: 221px;
-    background-position: center;
-    background-size: cover;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+  width: 100%;
+  height: 221px;
+  background-position: center;
+  background-size: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  position: relative;
+}
+
+.label {
+  border-radius: 100px;
+  padding: 6px;
+  padding-right: 16px;
+  padding-left: 16px;
+  gap: 10px;
+  background-color: rgba(250, 241, 236, 0.8)  !important;
+  border: none;
+  font-size: 12px;
+  text-align: center;
+  position: absolute;
+  top: 20px;
+  right: 10px;
 }
 
 h1 {
@@ -102,6 +114,7 @@ position: relative;
   font-size: 12px;
   text-align: center;
 }
+
 
 .tag-selector:checked+label {
   background-color: $orange !important;
