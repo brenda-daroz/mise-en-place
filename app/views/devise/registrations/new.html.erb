@@ -1,18 +1,29 @@
 
 <div class="form-box">
-<h2>Create an account</h2>
+  <h2>Create an account</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <div>
+
       <%= f.input_field :email,
                   required: true,
                   autofocus: false,
                   input_html: { autocomplete: "email" }%>
       <%= f.label :email,
                   class: 'float' %>
+    </div>
+
+     <div>
+
+      <%= f.input_field :username,
+                  required: true,
+                  input_html: { autocomplete: "username" },
+                  type: 'username'%>
+      <%= f.label :username,
+                  class: 'float'%>
     </div>
 
     <div>
@@ -31,6 +42,7 @@
       <%= f.label :password_confirmation,
                   class: 'float' %>
     </div>
+
   </div>
 
   <div class="form-actions">
