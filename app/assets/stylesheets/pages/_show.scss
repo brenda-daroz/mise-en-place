@@ -45,16 +45,21 @@ $scroll-factor : .4;
   z-index: 1000;
 }
 
-.show-favorite-button {
+.show-favourite-button {
   position: absolute;
   padding: 5px 20px 20px 20px;
   top: 0;
   right: 0;
   z-index: 1000;
-  color: $orange;
-  opacity: 0.8;
   font-size: 50px;
 
+}
+
+.icon-deco {
+  color: $orange;
+  opacity: 0.8;
+
+  text-decoration: none;
   &:focus {
     outline: none !important;
   }

@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :favourites, dependent: :destroy
+
+  def has_favourite?(recipe)
+    favourites.where(recipe: recipe).exists?
+  end
 end

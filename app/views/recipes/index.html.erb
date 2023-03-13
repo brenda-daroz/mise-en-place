@@ -1,6 +1,5 @@
 <h1>Mise en place</h1>
 
-
 <%= simple_form_for :search, url: recipes_path, method: "GET", html: { class: '' } do |f| %>
   <div class="search-container">
     <%= f.input :query, input_html: { id:'search-bar', value: params.dig(:search, :query) }, placeholder: "Find a recipe", label:false %>
@@ -15,9 +14,9 @@
   </div>
 <% end %>
 
-
 <% @recipes.each do |recipe| %>
   <div class="card">
+    <%= render "favourites/favourite", recipe: recipe %>
     <% if recipe.image? %>
       <%= image_tag recipe.image %>
     <% else %>
