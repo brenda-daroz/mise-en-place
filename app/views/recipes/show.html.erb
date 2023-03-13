@@ -1,9 +1,16 @@
+<% content_for :meta_title,
+"#{@recipe.title} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @recipe.summary %>
+<% content_for :meta_image, @recipe.image %>
+
 <% if user_signed_in? && current_user.admin? %>
   <%= link_to "Edit", edit_recipe_path(@recipe) %>
 <% end %>
 <div class="show-wrapper">
   <div class="favorite-back-button">
-    <%= link_to "#{image_tag("icons/go_back.svg")}".html_safe, recipes_path, class: "show-back-button" %>
+    <%= link_to "#{image_tag("icons/go_back.svg")}".html_safe,
+    recipes_path,
+    class: "show-back-button" %>
     <%= render "favourites/favourite", recipe: @recipe %>
   </div>
 
@@ -15,7 +22,8 @@
     <h1 class="show-title"><%= @recipe.title %></h1>
     <div
       data-controller="ingredients"
-      data-ingredients-recipe-id-value="<%= @recipe.id %>">
+      data-ingredients-recipe-id-value="<%= @recipe.id %>"
+    >
       <div data-ingredients-target="ingredientsList">
         <%= render "ingredients",
         ingredients: ingredients,
