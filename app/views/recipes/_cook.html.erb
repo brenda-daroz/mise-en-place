@@ -7,7 +7,8 @@
       <div class="cooking-mode-steps scroller">
         <% @recipe.steps.each_with_index do |step| %>
           <section>
-            <%= step.number %>.
+            <span class="ingredient"><%= step.number %>.
+            </span>
             <%= step.step %>
           </section>
         <% end %>
@@ -18,7 +19,7 @@
           <% ingredients.each do |ingredient| %>
             <li class="recipe-ingredients">
 
-              <%= ingredient[:amount] %>
+              <span class="ingredient"><%= ingredient[:amount] %></span>
 
               <%= ingredient[:unit].capitalize == "G" ? "Grams" : ingredient[:unit].capitalize %>
 

@@ -31,10 +31,13 @@
   height: 100%;
   width: 35vw;
   background-color: $light-orange;
-  line-height: 1.5em;
+
   margin-bottom: 30px;
 }
 
+.cooking-mode-ingredients li {
+  margin-bottom: 10px;
+}
 
 .scroller {
   height: 100vh;
