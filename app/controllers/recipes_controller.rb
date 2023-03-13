@@ -40,7 +40,32 @@ class RecipesController < ApplicationController
                      ingredients: handleUnit(params[:measurement], params[:factor].to_f) }
   end
 
+  def new
+    @recipe = Recipe.new
+    @step = Step.new
+    @ingredient = Ingredient.new
+    @recipe_ingredient = RecipeIngredient.new
+  end
+
+  def create
+
+    @recipe = Recipe.new(recipe_params)
+    @recipe.user = current_user
+    if @recipe.save!
+      redirect_to
+    else
+
+    end
+
+    
+    # redirect_to user_recipes_path(@recipe) < path doesnt exist yet
+  end
+
   private
+
+  def recipe_params
+    params.require(:recipe).permit(:title, :summary, :servings, :image, :readyInMinutes, :category, :user_id)
+  end
 
   def handleUnit(measurement, factor)
     @recipe.recipe_ingredients.map do |ingredient|

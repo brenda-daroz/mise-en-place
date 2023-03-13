@@ -59,12 +59,11 @@ results.each do |result|
   recipe = Recipe.new(
     title: title,
     summary: summary,
-    vegetarian: vegetarian,
-    vegan: vegan,
     image: image,
     servings: servings,
     readyInMinutes: ready_in_minutes,
-    category: category
+    category: category,
+    user_id: User.first.id
   )
   recipe.save!
 
