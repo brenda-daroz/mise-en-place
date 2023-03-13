@@ -48,6 +48,12 @@ results.each do |result|
   servings = result["servings"]
   ready_in_minutes = result["readyInMinutes"]
 
+  category = "meat"
+  category = "vegan" if vegan
+  category = "vegetarian" if vegetarian
+  category = "vegan" if vegan && vegetarian
+
+
   puts "Creating a recipe ..."
 
   recipe = Recipe.new(
@@ -57,7 +63,8 @@ results.each do |result|
     vegan: vegan,
     image: image,
     servings: servings,
-    readyInMinutes: ready_in_minutes
+    readyInMinutes: ready_in_minutes,
+    category: category
   )
   recipe.save!
 
