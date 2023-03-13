@@ -3,8 +3,10 @@
 
 <% @favourites.each do |favourite| %>
   <div class="card">
+    <%= render "favourites/favourite", recipe: favourite.recipe %>
     <%= image_tag(favourite.recipe.image) %>
     <%#= label_tag 'label' %>
     <%= link_to favourite.recipe.title, recipe_path(favourite.recipe), class: "card-title" %>
+    <%= link_to '', recipe_path(favourite.recipe), class: 'card-link'  %>
   </div>
 <% end %>

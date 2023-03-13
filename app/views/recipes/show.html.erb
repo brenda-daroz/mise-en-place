@@ -3,27 +3,10 @@
 <% end %>
 <div class="show-wrapper">
   <div class="favorite-back-button">
-    <%= link_to "#{image_tag("icons/go_back.svg")}".html_safe,
-    recipes_path,
-    class: "show-back-button" %>
-
-    <div data-controller="toggle-favourite">
-      <div data-toggle-favourite-target="items">
-
-        <% if @favourite.id %>
-          <%= link_to favourite_path(@favourite), data: { turbo_method: :delete  }, class: "show-favorite-button" do %>
-            <i class="fa-solid fa-heart"></i>
-          <% end %>
-        <% else %>
-          <%= link_to recipe_favourites_path(@recipe), data: { turbo_method: :post  }, class: "show-favorite-button" do %>
-            <i class="fa-regular fa-heart"></i>
-          <% end %>
-        <% end %>
-
-      </div>
-    </div>
-
+    <%= link_to "#{image_tag("icons/go_back.svg")}".html_safe, recipes_path, class: "show-back-button" %>
+    <%= render "favourites/favourite", recipe: @recipe %>
   </div>
+
   <div class="show-header">
     <%= image_tag @recipe.image, class: "recipe-img" %>
   </div>
@@ -32,8 +15,7 @@
     <h1 class="show-title"><%= @recipe.title %></h1>
     <div
       data-controller="ingredients"
-      data-ingredients-recipe-id-value="<%= @recipe.id %>"
-    >
+      data-ingredients-recipe-id-value="<%= @recipe.id %>">
       <div data-ingredients-target="ingredientsList">
         <%= render "ingredients",
         ingredients: ingredients,
@@ -52,5 +34,4 @@
       </ul>
     </div>
   </div>
-
 </div>

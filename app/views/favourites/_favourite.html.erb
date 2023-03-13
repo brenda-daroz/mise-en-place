@@ -1,0 +1,8 @@
+  <div data-controller="toggle-favourite">
+    <div data-toggle-favourite-target="items">
+      <%= link_to recipe_fav_path(recipe), class: "show-favourite-button",  data: { toggle_favourite_target: "items", action: "click->toggle-favourite#toggle" } do %>
+
+        <i class="<%= user_signed_in? && current_user.has_favourite?(recipe) ? 'fa-solid fa-heart'  : 'fa-regular fa-heart'%> icon-deco" data-toggle-favourite-target="icon"></i>
+      <% end %>
+    </div>
+  </div>
