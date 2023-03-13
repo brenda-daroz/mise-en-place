@@ -1,7 +1,7 @@
 
 <div class="navbar_bottom">
   <%= link_to root_path do %>
-    <% if params[:controller] == 'pages' %>
+    <% if params[:controller] == 'recipes' %>
       <%= image_tag "icons/home_oranje.svg" %>
     <% else %>
       <%= image_tag "icons/home_grey.svg" %>
@@ -16,8 +16,8 @@
     <% end %>
   <% end %>
 
-  <%= link_to root_path do %>
-    <% if  params[:controller] == 'users' %>
+  <%= link_to edit_user_registration_path do %>
+    <% if devise_controller? %>
       <%= image_tag "icons/user_oranje.svg" %>
     <% else %>
       <%= image_tag "icons/user_grey.svg" %>
