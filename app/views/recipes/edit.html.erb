@@ -1,5 +1,8 @@
 <%= simple_form_for @recipe do |f| %>
   <%= f.input :title %>
   <%= f.input :image %>
+  <%= f.input :category, collection: Recipe.categories.keys %>
   <%= f.button :submit %>
 <% end %>
+
+<%= link_to "Go back", recipes_path %>
