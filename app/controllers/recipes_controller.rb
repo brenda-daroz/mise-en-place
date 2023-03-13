@@ -9,6 +9,16 @@ class RecipesController < ApplicationController
     filter_by_global
   end
 
+  def edit
+    @recipe = Recipe.find(params[:id])
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    @recipe.update(recipe_params) # Will raise ActiveModel::ForbiddenAttributesError
+    redirect_to recipe_path(@recipe)
+  end
+
   def filter_by_global
     return unless params.dig(:search, :query).present?
 
@@ -24,9 +34,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
 
     @favourite = @recipe.favourites.find_by(user: current_user)
-    unless @favourite
-      @favourite = Favourite.new
-    end
+    @favourite ||= Favourite.new
 
     @factor = params[:factor] || 1
     render locals: { measurement: "eu", ingredients: handleUnit("eu", @factor) }
@@ -42,17 +50,21 @@ class RecipesController < ApplicationController
 
   private
 
+  def recipe_params
+    params.require(:recipe).permit(:title, :image)
+  end
+
   def handleUnit(measurement, factor)
     @recipe.recipe_ingredients.map do |ingredient|
       if measurement == "us"
         {
-          amount: ingredient.measurement_us_amount.to_f * factor,
+          amount: ingredient.measurement_us_amount.round(1).to_f * factor,
           unit: ingredient.measurement_us_unit,
           name: ingredient.ingredient.name
         }
       elsif measurement == "eu"
         {
-          amount: ingredient.measurement_eu_amount.to_f * factor,
+          amount: ingredient.measurement_eu_amount.round(1).to_f * factor,
           unit: ingredient.measurement_eu_unit,
           name: ingredient.ingredient.name
         }
