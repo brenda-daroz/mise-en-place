@@ -26,6 +26,5 @@ export default class extends Controller {
       .then(data => {
         this.ingredientsListTarget.innerHTML = data
       })
-    // this.element.classList.add(this.activeClass)
   }
 }

@@ -4,23 +4,21 @@
     recipes_path,
     class: "show-back-button" %>
 
-
     <div data-controller="toggle-favourite">
-    <div data-toggle-favourite-target="items">
+      <div data-toggle-favourite-target="items">
 
-      <% if @favourite.id %>
-        <%= link_to favourite_path(@favourite), data: { turbo_method: :delete  }, class: "show-favorite-button" do %>
-          <i class="fa-solid fa-heart"></i>
+        <% if @favourite.id %>
+          <%= link_to favourite_path(@favourite), data: { turbo_method: :delete  }, class: "show-favorite-button" do %>
+            <i class="fa-solid fa-heart"></i>
+          <% end %>
+        <% else %>
+          <%= link_to recipe_favourites_path(@recipe), data: { turbo_method: :post  }, class: "show-favorite-button" do %>
+            <i class="fa-regular fa-heart"></i>
+          <% end %>
         <% end %>
-      <% else %>
-        <%= link_to recipe_favourites_path(@recipe), data: { turbo_method: :post  }, class: "show-favorite-button" do %>
-          <i class="fa-regular fa-heart"></i>
-        <% end %>
-      <% end %>
 
       </div>
     </div>
-
 
   </div>
   <div class="show-header">
@@ -45,7 +43,7 @@
     <div class="show-steps">
       <ul>
         <% @recipe.steps.each_with_index do |step| %>
-          <li><%= step.number %>.
+          <li><span class="step"><%= step.number %>.</span>
             <%= step.step %></li>
         <% end %>
       </ul>
