@@ -9,6 +9,16 @@ class RecipesController < ApplicationController
     filter_by_global
   end
 
+  def edit
+    @recipe = Recipe.find(params[:id])
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    @recipe.update(recipe_params) # Will raise ActiveModel::ForbiddenAttributesError
+    redirect_to recipe_path(@recipe)
+  end
+
   def filter_by_global
     return unless params.dig(:search, :query).present?
 
@@ -39,6 +49,10 @@ class RecipesController < ApplicationController
   end
 
   private
+
+  def recipe_params
+    params.require(:recipe).permit(:title, :image)
+  end
 
   def handleUnit(measurement, factor)
     @recipe.recipe_ingredients.map do |ingredient|
