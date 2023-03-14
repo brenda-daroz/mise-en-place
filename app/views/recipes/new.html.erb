@@ -2,25 +2,12 @@
 
 <div>
   <%= simple_form_for @recipe do |f| %>
-    <%= f.input :title %>
-    <%= f.input :summary %>
-    <%= f.input :servings %>
-    <%= f.input :readyInMinutes %>
+    <%= f.input :title, placeholder: "your amazing recipe" %>
+    <%= f.input :servings, placeholder: "e.g. 10" %>
+    <%= f.input :readyInMinutes, label: "Time to cook recipe (in minutes)", placeholder: "e.g. 45" %>
     <%= f.input :image, as: :file, label: "Photo of your Dish" %>
+    <h6>Choose a category</h6>
     <%= f.collection_radio_buttons :category, [[:vegan, 'Vegan'], [:vegetarian, 'Vegetarian'], [:meat, 'Meat']], :first, :last %>
     <%= f.button :submit %>
   <% end %>
 </div>
-
-<div>
-  <%= simple_form_for @ingredient do |f| %>
-    <%= f.input :name %>
-    <%= f.button :submit, "Add ingredient" %>
-  <% end %>
-</div>
-
-<%#= simple_form_for @recipe_ingredient do |f| %>
-  <%#= f.input :measurement_eu_amount %>
-  <%#= f.input :measurement_eu_unit %>
-  <%#= f.button :submit, "Add measurements" %>
-<%# end %>

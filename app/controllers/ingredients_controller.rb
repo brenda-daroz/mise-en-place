@@ -7,7 +7,6 @@ class IngredientsController < ApplicationController
   def create
     @ingredient = Ingredient.new(ingredient_params)
     @ingredient.save!
-    redirect_to new_ingredient_path
   end
 
   private
