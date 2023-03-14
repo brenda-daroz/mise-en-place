@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
 
   def index
     categories = params.dig(:search, :category)&.drop(1) || []
-    @recipes = []
+    @recipes = []                                        # TODO : needs to be all recipes where assoctiated user is the admin
     categories.each { |category| @recipes += Recipe.public_send(category) }
     @recipes = Recipe.all if categories.empty?
     filter_by_global
@@ -66,6 +66,13 @@ class RecipesController < ApplicationController
       redirect_to new_recipe_path
       # trigger pop up saying "your recipe was not created, try again"
     end
+  end
+
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    # No need for app/views/restaurants/destroy.html.erb
+    redirect_to dashboard_path, status: :see_other
   end
 
   private
