@@ -5,9 +5,7 @@ class Recipe < ApplicationRecord
   has_many :recipe_ingredients, dependent: :destroy
   has_many :ingredients, through: :recipe_ingredients
   has_many :favourites, dependent: :destroy
-  # scope :vegetarian, -> { where(vegetarian: true) }
-  # scope :vegan, -> { where(vegan: true) }
-  # scope :meat, -> { where(vegan: false, vegetarian: false) }
+  belongs_to :user
 
   # This instead of being 2 separete colums in the Recipes table
   # remove the vegetarian and vegan columns

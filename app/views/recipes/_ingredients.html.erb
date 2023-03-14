@@ -36,11 +36,14 @@
   </div>
 </div>
 </div>
-<h4>Ingredients</h4>
 
-<ul>
-  <% ingredients.each do |ingredient| %>
-    <li class="recipe-ingredients">
+  <h4>Ingredients</h4>
+  <% if user_signed_in? && current_user == @recipe.user %>
+      <%= link_to "Add ingredients", new_recipe_ingredient_path(@recipe) %>
+  <% end %>
+  <ul>
+    <% ingredients.each do |ingredient| %>
+      <li class="recipe-ingredients">
 
       <span class="ingredient"><%= ingredient[:amount] %></span>
 

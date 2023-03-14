@@ -1,0 +1,26 @@
+<h1>Create your own Recipe</h1>
+
+<div>
+  <%= simple_form_for @recipe do |f| %>
+    <%= f.input :title %>
+    <%= f.input :summary %>
+    <%= f.input :servings %>
+    <%= f.input :readyInMinutes %>
+    <%= f.input :image, as: :file, label: "Photo of your Dish" %>
+    <%= f.collection_radio_buttons :category, [[:vegan, 'Vegan'], [:vegetarian, 'Vegetarian'], [:meat, 'Meat']], :first, :last %>
+    <%= f.button :submit %>
+  <% end %>
+</div>
+
+<div>
+  <%= simple_form_for @ingredient do |f| %>
+    <%= f.input :name %>
+    <%= f.button :submit, "Add ingredient" %>
+  <% end %>
+</div>
+
+<%#= simple_form_for @recipe_ingredient do |f| %>
+  <%#= f.input :measurement_eu_amount %>
+  <%#= f.input :measurement_eu_unit %>
+  <%#= f.button :submit, "Add measurements" %>
+<%# end %>
