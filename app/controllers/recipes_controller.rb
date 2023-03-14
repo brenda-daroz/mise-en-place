@@ -21,7 +21,6 @@ class RecipesController < ApplicationController
 
   def filter_by_global
     return unless params.dig(:search, :query).present?
-
     recipe_ids = @recipes.map(&:id)
     @recipes = Recipe.where(id: recipe_ids)
     @recipes = @recipes.global_search(params[:search][:query])
@@ -49,10 +48,29 @@ class RecipesController < ApplicationController
                      ingredients: handleUnit(params[:measurement], params[:factor].to_f) }
   end
 
+  def new
+    @recipe = Recipe.new
+    @step = Step.new
+    @ingredient = Ingredient.new
+    @recipe_ingredient = RecipeIngredient.new
+  end
+
+  def create
+
+    @recipe = Recipe.new(recipe_params)
+    @recipe.user = current_user
+    if @recipe.save!
+      redirect_to recipe_path(@recipe)
+    else
+      redirect_to new_recipe_path
+      #trigger pop up saying "your recipe was not created, try again"
+    end
+  end
+
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :image)
+    params.require(:recipe).permit(:title, :summary, :servings, :image, :readyInMinutes, :category, :user_id)
   end
 
   def handleUnit(measurement, factor)

@@ -1,0 +1,13 @@
+<h1>Add instrucitons to your recipe</h1>
+<div>
+  <%= simple_form_for [@recipe, @step] do |f| %>
+    <%= f.input :number %>
+    <%= f.input :step %>
+    <%= f.button :submit, "Add step" do %>
+      <%= redirect_to new_recipe_step_path(@recipe) %>
+    <% end %>
+    <%= f.button :submit, "Done" do %>
+      <%= redirect_to recipe_path(@recipe) %>
+    <% end %>
+  <% end %>
+</div>
