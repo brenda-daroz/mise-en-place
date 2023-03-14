@@ -1,6 +1,6 @@
 .my-button {
   border-radius: 100px;
-  padding: 8px;
+  padding: 6px;
   gap: 10px;
   background-color: $light-orange;
   border: none;
@@ -14,6 +14,20 @@
   width: 60px;
   font-size: 12px;
   padding: 6px;
+}
+
+.my-button-show-cook {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  width: 80px;
+  // background-color: $orange;
+}
+
+.my-button-show-cook img {
+  width: 18px;
+  height: 18px;
+  color: black;
 }
 
 .active {
@@ -33,5 +47,9 @@
 }
 
 .exit-button {
+  margin-top: 20px;
   margin-left: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
 }

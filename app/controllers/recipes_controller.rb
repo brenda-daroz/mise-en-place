@@ -15,12 +15,13 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
-    @recipe.update(recipe_params) # Will raise ActiveModel::ForbiddenAttributesError
+    @recipe.update(recipe_params)
     redirect_to recipe_path(@recipe)
   end
 
   def filter_by_global
     return unless params.dig(:search, :query).present?
+
     recipe_ids = @recipes.map(&:id)
     @recipes = Recipe.where(id: recipe_ids)
     @recipes = @recipes.global_search(params[:search][:query])
@@ -28,7 +29,7 @@ class RecipesController < ApplicationController
 
   def cook
     @recipe = Recipe.find(params[:recipe_id])
-    @factor = params[:factor].to_f || 1.0
+    @factor = params[:factor] || 1
     @measurement = params[:measurement] || "eu"
 
     render "cook", locals: { ingredients: handleUnit(@measurement, @factor) }
@@ -60,14 +61,13 @@ class RecipesController < ApplicationController
   end
 
   def create
-
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
     if @recipe.save!
       redirect_to recipe_path(@recipe)
     else
       redirect_to new_recipe_path
-      #trigger pop up saying "your recipe was not created, try again"
+      # trigger pop up saying "your recipe was not created, try again"
     end
   end
 

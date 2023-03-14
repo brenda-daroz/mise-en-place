@@ -1,9 +1,12 @@
 <div data-controller="page-orientation" data-route="<%=recipe_cook_path(recipe_id: @recipe.id) %>">
 <div class="buttons-wrapper">
+<div class="my-button my-button-show my-button-show-cook">
   <button
-    class="my-button my-button-show my-button-show-cook"
+    class="my-button"
     data-action="click->page-orientation#changeOrientation"
   >Cook</button>
+  <%= image_tag("icons/play.svg") %>
+  </div>
   <div
     data-page-orientation-target="fullscreen"
     class="cooking-mode-hidden cooking-mode"
@@ -15,6 +18,7 @@
   >
       <button
       class="my-button my-button-show"
+
       data-action="click->ingredients#changePortion"
       data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: measurement, factor: 1) %>"
     >1x</button>
