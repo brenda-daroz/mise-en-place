@@ -42,9 +42,6 @@
 </div>
 
   <h4>Ingredients</h4>
-  <% if user_signed_in? && current_user == @recipe.user %>
-      <%= link_to "Add ingredients", new_recipe_recipe_ingredient_path(@recipe.id) %>
-  <% end %>
   <ul>
     <% ingredients.each do |ingredient| %>
       <li class="recipe-ingredients">
@@ -54,7 +51,10 @@
       <%= ingredient[:unit].capitalize == "G" ? "Grams" :  ingredient[:unit].capitalize %>
 
       <%= ingredient[:name].capitalize   %>
-    </li>
+      </li>
+    <% end %>
+  </ul>
+  <% if user_signed_in? && current_user == @recipe.user %>
+      <%= link_to "Add ingredients", new_recipe_recipe_ingredient_path(@recipe.id) %>
   <% end %>
-</ul>
 </div>

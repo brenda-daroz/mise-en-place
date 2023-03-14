@@ -10,3 +10,15 @@
 <% end %>
 
 <%= link_to "Done", recipe_path(@recipe) %>
+
+<ul>
+  <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
+    <li class="recipe-ingredients">
+    <span class="ingredient"><%= recipe_ingredient.measurement_eu_amount %></span>
+
+      <%= recipe_ingredient.measurement_eu_unit %>
+
+      <%= recipe_ingredient.ingredient.name %>
+    </li>
+  <% end %>
+</ul>
