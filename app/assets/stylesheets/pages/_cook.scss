@@ -42,15 +42,15 @@
 .scroller {
   height: 100vh;
   overflow-y: scroll;
-  scroll-snap-type: y proximity;
+  scroll-snap-type: y mandatory;
   scroll-padding-top: 15vh
 }
 
 .scroller section {
   position: relative;
-  scroll-snap-align: center;
+  scroll-snap-align: start;
   scroll-snap-stop: always;
   display: flex;
-  min-height: 90vh;
+  min-height: 100vh;
   padding: 50px 50px;
 }

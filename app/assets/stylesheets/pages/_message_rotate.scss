@@ -3,13 +3,14 @@
   #turn {
     margin: 0 auto;
     display: block;
-    height: 80vh;
+    height: 70vh;
 
     & p {
       text-align: center;
       color: $orange;
-      background-color: rgb(230, 230, 230);
+      // background-color: rgb(230, 230, 230);
       font-weight: bold;
+      font-size: 20px;
     }
   }
 
@@ -27,6 +28,6 @@
 
   #container {
     display: block;
-    margin-top: 20px;
+    // margin-top: 20px;
   }
 }
