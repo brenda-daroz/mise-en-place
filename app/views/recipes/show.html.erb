@@ -1,3 +1,8 @@
+<% content_for :meta_title,
+"#{@recipe.title} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @recipe.summary %>
+<% content_for :meta_image, @recipe.image %>
+
 <% if user_signed_in? && current_user.admin? %>
   <%= link_to "Edit", edit_recipe_path(@recipe) %>
 <% end %>
@@ -6,24 +11,9 @@
     <%= link_to "#{image_tag("icons/go_back.svg")}".html_safe,
     recipes_path,
     class: "show-back-button" %>
-
-    <div data-controller="toggle-favourite">
-      <div data-toggle-favourite-target="items">
-
-        <% if @favourite.id %>
-          <%= link_to favourite_path(@favourite), data: { turbo_method: :delete  }, class: "show-favorite-button" do %>
-            <i class="fa-solid fa-heart"></i>
-          <% end %>
-        <% else %>
-          <%= link_to recipe_favourites_path(@recipe), data: { turbo_method: :post  }, class: "show-favorite-button" do %>
-            <i class="fa-regular fa-heart"></i>
-          <% end %>
-        <% end %>
-
-      </div>
-    </div>
-
+    <%= render "favourites/favourite", recipe: @recipe %>
   </div>
+
   <div class="show-header">
     <%= image_tag @recipe.image, class: "recipe-img" %>
   </div>
@@ -56,5 +46,4 @@
       <%= link_to "Add steps", new_recipe_step_path(@recipe) %>
     <% end %>
   </div>
-
 </div>

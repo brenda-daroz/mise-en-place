@@ -1,10 +1,13 @@
-<h1>Welcome <%= current_user.username %> </h1>
+<h1>Welcome, <%= current_user.username %>! </h1>
+<h5>Find all your saved favourites here. </h5>
 
 
 <% @favourites.each do |favourite| %>
   <div class="card">
-    <%= image_tag(favourite.recipe.image) %>
+    <%= render "favourites/favourite", recipe: favourite.recipe %>
+    <div class="image-container" style="background-image:url('<%= favourite.recipe.image %>');"></div>
     <%#= label_tag 'label' %>
     <%= link_to favourite.recipe.title, recipe_path(favourite.recipe), class: "card-title" %>
+    <%= link_to '', recipe_path(favourite.recipe), class: 'card-link'  %>
   </div>
 <% end %>
