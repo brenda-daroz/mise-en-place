@@ -69,6 +69,8 @@ results.each do |result|
     user: admin
   )
   recipe.save!
+  p recipe
+  p recipe.image
 
   puts "Getting the steps for that recipe ..."
 

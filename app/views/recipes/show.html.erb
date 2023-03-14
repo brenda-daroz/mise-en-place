@@ -15,7 +15,9 @@
   </div>
 
   <div class="show-header">
-    <%= image_tag @recipe.image, class: "recipe-img" %>
+    <% if @recipe.image %>
+      <%= image_tag @recipe.image, class: "recipe-img" %>
+    <% end %>
   </div>
 
   <div class="show-main section">

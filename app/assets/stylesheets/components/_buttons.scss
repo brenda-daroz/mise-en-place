@@ -4,6 +4,7 @@
   gap: 10px;
   background-color: $light-orange;
   border: none;
+  color: black
 }
 
 .my-button:target {
@@ -47,8 +48,7 @@
 }
 
 .exit-button {
-  margin-top: 20px;
-  margin-left: 10px;
+  margin: 20px;
   position: fixed;
   top: 0;
   left: 0;
