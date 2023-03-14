@@ -6,4 +6,8 @@ class User < ApplicationRecord
 
   has_many :favourites, dependent: :destroy
   has_many :recipes, dependent: :destroy
+
+  def has_favourite?(recipe)
+    favourites.where(recipe: recipe).exists?
+  end
 end

@@ -8,34 +8,49 @@
 
 .cooking-mode {
   overflow-y: auto;
+  margin: 50px 20px !important;
+  height: 100%;
 }
 
-.cooking-mode ul {
-  margin: 50px 20px !important;
-}
 
 .cooking-mode-wrapper {
   display: flex;
 }
 
 .cooking-mode-steps {
-  width: 65vw;
-  overflow-y: scroll;
-
-  ul {
-    li {
-      margin-bottom: 20px;
-    }
-  }
+  width: 60vw;
+  font-size: large;
 }
 
 .cooking-mode-ingredients {
   position: fixed;
   top: 0;
   right: 0;
+  padding: 20px 30px;
   overflow-y: scroll;
-  min-height: 100%;
+  height: 100%;
   width: 35vw;
   background-color: $light-orange;
-  line-height: 1.5em;
+
+  margin-bottom: 30px;
+}
+
+.cooking-mode-ingredients li {
+  margin-bottom: 10px;
+}
+
+.scroller {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y proximity;
+  scroll-padding-top: 15vh
+}
+
+.scroller section {
+  position: relative;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  display: flex;
+  min-height: 90vh;
+  padding: 50px 50px;
 }
