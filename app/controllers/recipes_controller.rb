@@ -54,9 +54,6 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @step = Step.new
-    @ingredient = Ingredient.new
-    @recipe_ingredient = RecipeIngredient.new
   end
 
   def create
@@ -74,7 +71,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :summary, :servings, :image, :readyInMinutes, :category, :user_id)
+    params.require(:recipe).permit(:title, :servings, :image, :readyInMinutes, :category, :user_id)
   end
 
   def handleUnit(measurement, factor)

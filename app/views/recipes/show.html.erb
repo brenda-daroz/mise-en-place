@@ -33,9 +33,6 @@
     </div>
 
     <h4>Steps</h4>
-    <% if user_signed_in? && current_user == @recipe.user %>
-      <%= link_to "Add steps", new_recipe_step_path(@recipe) %>
-    <% end %>
 
     <div class="show-steps">
       <ul>
@@ -45,5 +42,8 @@
         <% end %>
       </ul>
     </div>
+    <% if user_signed_in? && current_user == @recipe.user %>
+      <%= link_to "Add steps", new_recipe_step_path(@recipe) %>
+    <% end %>
   </div>
 </div>

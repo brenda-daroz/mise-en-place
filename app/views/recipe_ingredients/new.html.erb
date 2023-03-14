@@ -1,0 +1,12 @@
+<h1>Add ingredients to your recipe</h1>
+
+<%= simple_form_for [@recipe, @recipe_ingredient] do |f| %>
+  <%= f.simple_fields_for :ingredient do |ingredient_form| %>
+    <%= ingredient_form.input :name %>
+  <% end %>
+  <%= f.input :measurement_eu_amount %>
+  <%= f.input :measurement_eu_unit %>
+  <%= f.button :submit, "Add measurements" %>
+<% end %>
+
+<%= link_to "Done", recipe_path(@recipe) %>
