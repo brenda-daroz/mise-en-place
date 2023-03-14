@@ -19,7 +19,8 @@ Rails.application.routes.draw do
   resources :favourites, only: %i[destroy index]
     get 'fav', to: 'favourites#fav', as: :fav
     resources :reviews, only: %i[create]
-  end
+ 
   resources :favourites, only: %i[destroy index fav]
   resources :reviews, only: %i[destroy]
+
 end
