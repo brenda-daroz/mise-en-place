@@ -13,14 +13,6 @@
 </div>
 
 <div>
-  <%= simple_form_for @step do |f| %>
-    <%= f.input :number %>
-    <%= f.input :step %>
-    <%= f.button :submit, "Add step" %>
-  <% end %>
-</div>
-
-<div>
   <%= simple_form_for @ingredient do |f| %>
     <%= f.input :name %>
     <%= f.button :submit, "Add ingredient" %>
