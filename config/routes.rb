@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   root to: "recipes#index"
-  resources :pages, only: [:home]
+
+  get 'dashboard', to: 'pages#dashboard'
+
 
   resources :recipes, only: %i[index show edit update] do
     get 'ingredients/:measurement/:factor', to: 'recipes#ingredients', as: :ingredients
