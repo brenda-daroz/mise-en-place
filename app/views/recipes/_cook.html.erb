@@ -1,32 +1,26 @@
-<div data-controller="page-orientation">
-  <div
-    data-page-orientation-target="fullscreen"
-    class="cooking-mode-hidden cooking-mode"
-  >
-    <div class="cooking-mode-wrapper">
-      <div class="cooking-mode-steps scroller">
-        <% @recipe.steps.each_with_index do |step| %>
-          <section>
-            <span class="ingredient"><%= step.number %>.
-            </span>
-            <%= step.step %>
-          </section>
-        <% end %>
-      </div>
-
-      <div class="cooking-mode-ingredients">
-        <ul>
-          <% ingredients.each do |ingredient| %>
-            <li class="recipe-ingredients">
-
-              <span class="ingredient"><%= ingredient[:amount] %></span>
-
-              <%= ingredient[:unit].capitalize == "G" ? "Grams" : ingredient[:unit].capitalize %>
-
-              <%= ingredient[:name].capitalize %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
+<div class="cooking-mode-wrapper cooking-mode">
+  <div class="cooking-mode-steps scroller">
+    <% @recipe.steps.each_with_index do |step| %>
+      <section>
+        <span class="ingredient"><%= step.number %>.
+        </span>
+        <%= step.step %>
+      </section>
+    <% end %>
   </div>
+
+  <div class="cooking-mode-ingredients">
+    <ul>
+      <% ingredients.each do |ingredient| %>
+        <li class="recipe-ingredients">
+
+          <span class="ingredient"><%= ingredient[:amount] %></span>
+
+          <%= ingredient[:unit].capitalize == "G" ? "Grams" : ingredient[:unit].capitalize %>
+
+          <%= ingredient[:name].capitalize %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
