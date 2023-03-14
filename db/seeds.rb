@@ -15,6 +15,15 @@ Recipe.destroy_all
 Ingredient.destroy_all
 User.destroy_all
 
+puts "creating default admin user"
+
+admin = User.create(
+  email: "admin@test.com",
+  password: "123456",
+  username: "admin",
+  admin: true
+)
+
 puts 'Creating 10 fake users...'
 10.times do
   User.create(
@@ -51,12 +60,13 @@ results.each do |result|
   puts "Creating a recipe ..."
 
   recipe = Recipe.new(
-    title:,
-    summary:,
-    image:,
-    servings:,
+    title: title,
+    summary: summary,
+    image: image,
+    servings: servings,
     readyInMinutes: ready_in_minutes,
-    category:
+    category: category,
+    user: admin
   )
   recipe.save!
 
