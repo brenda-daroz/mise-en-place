@@ -45,5 +45,11 @@
     <% if user_signed_in? && current_user == @recipe.user %>
       <%= link_to "Add steps", new_recipe_step_path(@recipe) %>
     <% end %>
+    <% if user_signed_in? && current_user == @recipe.user %>
+      <%= link_to "Destroy Recipe",
+        recipe_path(@recipe),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+      %>
+    <% end %>
   </div>
 </div>
