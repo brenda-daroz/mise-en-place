@@ -3,6 +3,7 @@ class RecipeIngredientsController < ApplicationController
   def new
     # @ingredient = Ingredient.new
     @recipe = Recipe.find(params[:recipe_id])
+    @recipe_ingredients = RecipeIngredient.where(recipe_id: @recipe.id)
     @recipe_ingredient = RecipeIngredient.new
     @recipe_ingredient.build_ingredient
   end
@@ -14,7 +15,7 @@ class RecipeIngredientsController < ApplicationController
     @recipe_ingredient.recipe = @recipe
     # @recipe_ingredient.ingredient = @ingredient
     if @recipe_ingredient.save
-      redirect_to recipe_path(@recipe)
+      redirect_to new_recipe_recipe_ingredient_path(@recipe.id)
     else
       render :new, status: :unprocessable_entity
     end
