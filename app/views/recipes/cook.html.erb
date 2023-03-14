@@ -1,2 +1,17 @@
-
-<%= render partial: "cook", locals: { ingredients: ingredients } %>
+<div id="turn">
+  <script
+    src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"
+  ></script>
+  <lottie-player
+    src="https://assets6.lottiefiles.com/private_files/lf30_qo9qo8oq.json"
+    background="transparent"
+    speed="0.8"
+    loop
+    autoplay
+  ></lottie-player>
+  <p>Please rotate your device for better experience</p>
+</div>
+<!-- (B) CONTENTS AS USUAL -->
+<div id="container">
+  <%= render partial: "cook", locals: { ingredients: ingredients } %>
+</div>

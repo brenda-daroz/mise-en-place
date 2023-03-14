@@ -30,7 +30,10 @@
 
   <body>
     <%= yield %>
-    <%= render "shared/navbar_bottom" %>
+    <% unless action_name == "cook" %>
+      <%= render "shared/navbar_bottom" %>
+    <% end %>
+
     <%= render "shared/flashes" %>
   </body>
 

@@ -23,6 +23,7 @@ export default class extends Controller {
     let isIOS = /iPad|iPhone|iPod/.test(navigator.platform) ||
       (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
     console.log(isIOS)
+    
     if (isIOS) {
       window.location = this.element.dataset.route
     }
