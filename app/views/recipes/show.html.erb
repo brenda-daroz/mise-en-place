@@ -47,22 +47,32 @@
     </div>
 
 
-    <div>
-      <% if @recipe.reviews.blank? %>
-        Be the first to leave a review for <%= @recipe.name %>
-      <% else %>
-        <% @recipe.reviews.each do |review| %>
-        <p><%= review.rating %></p>
-        <p><%= review.content %></p>
+    <div data-controller="insert-in-list">
+      <div data-insert-in-list-target="items">
+        <% if @recipe.reviews.blank? %>
+          Be the first to leave a review for <%= @recipe.name %>
+        <% else %>
+          <% @recipe.reviews.each do |review| %>
+          <%# <%= render "reviews/review", recipe: @recipe %>
+            <p><%= review.rating %></p>
+            <p><%= review.content %></p>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
 
-    <%= simple_form_for([@recipe, @review]) do |f| %>
-      <%= f.input :rating %>
-      <%= f.input :content %>
-      <%= f.button :submit %>
-    <% end %>
+
+      <%# <%= render "reviews/form", recipe: @recipe %>
+
+      <%= simple_form_for([@recipe, @review], data: {
+        insert_in_list_target: "form",
+        action: "submit->insert-in-list#send"
+        }) do |f| %>
+        <%= f.input :rating %>
+        <%= f.input :content %>
+        <%= f.button :submit %>
+      <% end %>
+
+    </div>
 
 
   </div>
