@@ -53,3 +53,22 @@
   top: 0;
   left: 0;
 }
+
+.my-links {
+  text-decoration: none;
+  color: $orange;
+  background: none;
+  border: 1px solid $orange;
+  font-size: 12px;
+  border-radius: 100px;
+  padding: 5px;
+  padding-right: 16px;
+  padding-left: 16px;
+  // gap: 10px;
+  text-align: center;
+}
+
+.links-container {
+  display: flex;
+  justify-content: space-between;
+}

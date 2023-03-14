@@ -32,7 +32,12 @@
       </div>
     </div>
 
+    <div class="links-container">
     <h4>Steps</h4>
+      <% if user_signed_in? && current_user == @recipe.user %>
+        <%= link_to "Add steps", new_recipe_step_path(@recipe), class: "my-links my-button-show" %>
+      <% end %>
+    </div>
 
     <div class="show-steps">
       <ul>
@@ -43,13 +48,13 @@
       </ul>
     </div>
     <% if user_signed_in? && current_user == @recipe.user %>
-      <%= link_to "Add steps", new_recipe_step_path(@recipe) %>
-    <% end %>
-    <% if user_signed_in? && current_user == @recipe.user %>
-      <%= link_to "Destroy Recipe",
-        recipe_path(@recipe),
-        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-      %>
+      <div>
+        <%= link_to "Delete Recipe",
+          recipe_path(@recipe),
+          class: "my-links my-button-show",
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+        %>
+      </div>
     <% end %>
   </div>
 </div>
