@@ -3,11 +3,16 @@
   <%= simple_form_for [@recipe, @step] do |f| %>
     <%= f.input :number %>
     <%= f.input :step %>
-    <%= f.button :submit, "Add step" do %>
-      <%= redirect_to new_recipe_step_path(@recipe) %>
-    <% end %>
-    <%= f.button :submit, "Done" do %>
-      <%= redirect_to recipe_path(@recipe) %>
-    <% end %>
+    <%= f.button :submit, "Add step" %>
   <% end %>
+  <%= link_to "Done", recipe_path(@recipe) %>
+</div>
+
+<div class="show-steps">
+  <ul>
+    <% @recipe.steps.each_with_index do |step| %>
+      <li><span class="step"><%= step.number %>.</span>
+        <%= step.step %></li>
+    <% end %>
+  </ul>
 </div>
