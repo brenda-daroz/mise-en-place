@@ -1,12 +1,12 @@
 <div data-controller="page-orientation" data-route="<%=recipe_cook_path(recipe_id: @recipe.id) %>">
-<div class="buttons-wrapper">
-<div class="my-button-show my-button-show-cook">
+  <div class="cook-button-wrapper">
   <button
-    class="my-button"
+    class="my-button my-button-show my-button-show-cook"
     data-action="click->page-orientation#changeOrientation"
-  >Cook
+  >Start cooking
   <%= image_tag("icons/play.svg") %></button>
   </div>
+<div class="buttons-wrapper">
   <div
     data-page-orientation-target="fullscreen"
     class="cooking-mode-hidden cooking-mode"
@@ -38,7 +38,14 @@
       data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: "eu", factor: @factor)%>"
     >Metric</button>
   </div>
+
 </div>
+<div class="d-flex justify-content-between">
+        <p><i class="fa-solid fa-utensils"></i> Serves <%= @recipe.servings  %></p>
+        <p><i class="fa-regular fa-clock"></i> Prep: <%= @recipe.readyInMinutes  %> mins</p>
+      </div>
+</div>
+<div>
 </div>
   <div class="links-container">
     <h4>Ingredients</h4>
@@ -50,9 +57,9 @@
     <% ingredients.each do |ingredient| %>
       <li class="recipe-ingredients">
 
-      <span class="ingredient"><%= ingredient[:amount] %></span>
+      <span class="ingredient"><%= ingredient[:amount] %>
 
-      <%= ingredient[:unit].capitalize == "G" ? "Grams" :  ingredient[:unit].capitalize %>
+      <%= ingredient[:unit].capitalize == "G" ? "Grams" :  ingredient[:unit].capitalize %></span>
 
       <%= ingredient[:name].capitalize   %>
       </li>

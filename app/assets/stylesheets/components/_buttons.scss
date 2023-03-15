@@ -12,17 +12,16 @@
 }
 
 .my-button-show {
-  width: 60px;
-  font-size: 12px;
-  padding: 6px;
+  width: 80px;
+  font-size: 13px;
+  padding: 8px;
+  margin: 0 5px;
 }
 
 .my-button-show-cook {
-  display: flex;
-  align-items: center;
-  padding: 0;
-  width: 80px;
-  // background-color: $orange;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 170px;
 }
 
 .my-button-show-cook img {
@@ -80,6 +79,7 @@
   justify-content: center;
 }
 
+
 .radio-btns-container {
   display: flex;
   justify-content: space-evenly;
@@ -92,4 +92,7 @@
   font-size: 20px !important;
   padding: 0px;
   font-weight: 700px;
+
+.favorites-button {
+  margin-top: 20px;
 }

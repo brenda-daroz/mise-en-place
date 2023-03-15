@@ -13,49 +13,69 @@
 
   .review-form-box {
     position: absolute;
-    width: 90%;
+    width: 100%;
     background: white;
     box-sizing: border-box;
   }
 
-
   .form-select, .form-control {
-    // border: .5px solid #DB6C2D;
-    // border-radius: 10px;
     border: none;
-    border-bottom: 2px solid #DB6C2D;
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    border-bottom: .5px solid $orange;
+    margin-bottom: 20px;
 
     &focus {
       outline: none !important;
     }
   }
 
-
   .review-card {
     padding: 5px;
-
   }
 
   .separation-line {
     display: flex;
     justify-content: center;
-    width: 70%;
+    width: 90%;
     border-bottom: .5px solid $orange;
     margin-bottom: 20px;
   }
 
 
-  #add-review {
-    margin: 10px;
+  #container-add-review {
+    margin-top: 50px;
     border: none;
     display: flex;
-    background-color: $light-orange;
-  }
+    justify-content: center;
+    text-align: center;
+    padding: 5px;
+    // background-color: $light-orange;
 
+    h6 {
+      margin-bottom: -10px;
+    }
+
+  }
 
   .review-plus-sign {
     background-color: transparent;
     border: none;
     color: $orange;
-    font-size: 30px;
+    font-size: 50px;
+    font-weight: 600;
+    padding-top: 0px;
+  }
+
+
+  .average-rating {
+    display: flex;
+    justify-content: center;
+    
+    border: .5px solid $orange;
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 15px;
+
   }

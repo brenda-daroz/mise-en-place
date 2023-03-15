@@ -1,0 +1,8 @@
+ <div class="average-rating">
+   <p> Average rating: <% @average_rating.times do %>
+      <i class="fa-solid fa-pizza-slice rating-active"></i>
+    <% end %>
+    <% (5 - @average_rating).times do %>
+      <i class="fa-solid fa-pizza-slice rating-inactive"></i>
+    <% end %> </p>
+</div>

@@ -31,7 +31,7 @@ $scroll-factor : .4;
 
 .buttons-wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-bottom: 20px;
 }
 
@@ -45,25 +45,41 @@ $scroll-factor : .4;
   z-index: 1000;
 }
 
+.show-back-button img {
+  width: 40px;
+}
+
 .show-favourite-button {
   position: absolute;
   padding: 5px 20px 20px 20px;
   top: 0;
   right: 0;
   z-index: 1000;
-  font-size: 50px;
+  font-size: 40px;
 
+}
+
+.cook-button-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .icon-deco {
   color: $orange;
-  opacity: 0.8;
-
+  // opacity: 0.8;
   text-decoration: none;
+  
 
   &:focus {
     outline: none !important;
   }
+}
+
+.buttons-wrapper-options {
+  display: flex;
+  justify-content: space-between;
 }
 
 // header-img
@@ -84,12 +100,12 @@ $scroll-factor : .4;
   border-radius: 25px;
   border: 0.5px solid white;
   width: 100%;
-  padding: 0 15px;
+  padding: 0 20px;
   background-color: white;
 }
 
 .show-main-steps {
-  padding: 0 15px;
+  padding: 0 20px;
 }
 
 
@@ -103,6 +119,8 @@ $scroll-factor : .4;
   ul {
     li {
       margin-bottom: 20px;
+      border-bottom: 1px solid rgba(172, 172, 172, 0.5);
+      padding-bottom: 10px;
     }
   }
 }
