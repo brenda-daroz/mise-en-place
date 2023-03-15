@@ -12,6 +12,14 @@ class StepsController < ApplicationController
     redirect_to new_recipe_step_path(@recipe)
   end
 
+  def destroy
+    @step = Step.find(params[:id])
+    @step.destroy
+    # No need for app/views/restaurants/destroy.html.erb
+    redirect_to new_recipe_step_path(@step.recipe), status: :see_other
+  end
+
+
   private
 
   def step_params
