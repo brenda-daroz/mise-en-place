@@ -42,7 +42,7 @@ def api_key
 end
 
 api_data = { key: api_key }
-url = RestClient.get("https://api.spoonacular.com/recipes/random?number=20&apiKey=#{api_data[:key]}")
+url = RestClient.get("https://api.spoonacular.com/recipes/random?number=40&apiKey=#{api_data[:key]}")
 response = JSON.parse(url)
 
 results = response["recipes"]
