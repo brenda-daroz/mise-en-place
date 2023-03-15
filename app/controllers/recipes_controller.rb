@@ -51,11 +51,12 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
 
     factor = param_factor
+    measurement = param_measurement
 
     render partial: "ingredients", locals: {
-      measurement: params[:measurement],
+      measurement:,
       factor:,
-      ingredients: handleUnit(params[:measurement], factor)
+      ingredients: handleUnit(measurement, factor)
     }
   end
 
