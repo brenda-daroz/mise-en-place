@@ -6,11 +6,15 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+require "open-uri"
 # require 'open-uri'
 require 'json'
 require 'rest-client'
 
 puts "Destroying recipes and ingredients and users and favorites"
+Recipe.all.each do |recipe|
+  recipe.photo.purge
+end
 Recipe.destroy_all
 Ingredient.destroy_all
 User.destroy_all
@@ -27,10 +31,10 @@ admin = User.create(
 puts 'Creating 10 fake users...'
 10.times do
   User.create(
-  email: "#{Faker::Name.first_name}@gmail.com",
-  password: "123456",
-  username: "#{Faker::Name.first_name}",
-)
+    email: "#{Faker::Name.first_name}@gmail.com",
+    password: "123456",
+    username: "#{Faker::Name.first_name}"
+  )
 end
 
 def api_key
@@ -59,18 +63,19 @@ results.each do |result|
 
   puts "Creating a recipe ..."
 
+  file = URI.open(image)
+
   recipe = Recipe.new(
-    title: title,
-    summary: summary,
-    image: image,
-    servings: servings,
+    title:,
+    summary:,
+    servings:,
     readyInMinutes: ready_in_minutes,
-    category: category,
+    category:,
     user: admin
   )
+  recipe.photo.attach(io: file, filename: recipe.title, content_type: "image/jpg")
   recipe.save!
   p recipe
-  p recipe.image
 
   puts "Getting the steps for that recipe ..."
 

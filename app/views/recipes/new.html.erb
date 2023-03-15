@@ -4,10 +4,20 @@
   <%= simple_form_for @recipe do |f| %>
     <%= f.input :title, placeholder: "your amazing recipe" %>
     <%= f.input :servings, placeholder: "e.g. 10" %>
-    <%= f.input :readyInMinutes, label: "Time to cook recipe (in minutes)", placeholder: "e.g. 45" %>
-    <%= f.input :image, as: :file, label: "Photo of your Dish" %>
+    <%= f.input :readyInMinutes,
+            label: "Time to cook recipe (in minutes)",
+            placeholder: "e.g. 45" %>
+    <%# <%= f.input :image, as: :file, label: "Photo of your Dish" %>
+    <%= f.input :photo, as: :file, label: "Photo of your Dish" %>
     <h6>Choose a category</h6>
-    <%= f.collection_radio_buttons :category, [[:vegan, 'Vegan'], [:vegetarian, 'Vegetarian'], [:meat, 'Meat']], :first, :last %>
+    <%= f.collection_radio_buttons :category,
+                               [
+                                 [:vegan, "Vegan"],
+                                 [:vegetarian, "Vegetarian"],
+                                 [:meat, "Meat"]
+                               ],
+                               :first,
+                               :last %>
     <%= f.button :submit %>
   <% end %>
 </div>

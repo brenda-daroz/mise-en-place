@@ -83,3 +83,4 @@ gem 'faker'
 gem 'pry-byebug'
 gem 'jquery-rails'
 gem 'erb-formatter'
+gem "cloudinary"
