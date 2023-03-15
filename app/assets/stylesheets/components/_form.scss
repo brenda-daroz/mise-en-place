@@ -5,10 +5,16 @@
   width: 400px;
   background: white;
   padding: 40px;
+  padding-bottom: 60px;
   box-sizing: border-box;
   // border: 1px solid rgba(0,0,0,.2);
   // box-shadow: 0 5px 10px rgba(0,0,0,.2);
 
+  .done-position {
+    position: relative;
+    top: -12px;
+    left: -15px;
+  }
 
   h2 {
     margin: 0 0 40px;
@@ -45,10 +51,10 @@
   color: #1F1309;
   pointer-events: none;
   transition: .5s;
-  }
+}
 
-  input[type="email"]:focus ~.float,
-  input[type="email"]:valid ~.float,
+input[type="email"]:focus ~.float,
+input[type="email"]:valid ~.float,
   input[type="password"]:focus ~.float,
   input[type="password"]:valid ~.float,
   input[type="password_confirmation"]:focus ~.float,
@@ -56,29 +62,29 @@
   input[type="username"]:focus ~.float,
   input[type="username"]:valid ~.float
  {
-  top: -12px;
-  left: 0;
-  color: #CAC4C0;
-  font-size: 12px;
-  font-weight: bold;
+   top: -12px;
+   left: 0;
+   color: #CAC4C0;
+   font-size: 12px;
+   font-weight: bold;
 
-}
+  }
 
-input[type="email"]:focus,
-input[type="email"]:valid,
+  input[type="email"]:focus,
+  input[type="email"]:valid,
 input[type="password"]:focus,
 input[type="password"]:valid,
 input[type="password_confirmation"]:focus,
 input[type="password_confirmation"]:valid,
 input[type="username"]:focus,
 input[type="username"]:valid
-  {
-    border-bottom: 2px solid #DB6C2D;
-  }
+{
+  border-bottom: 2px solid #DB6C2D;
+}
 
 
-  #user_remember_me
-   {
+#user_remember_me
+{
     border: .2px solid #CAC4C0;
     background-color: #DB6C2D;
   }
@@ -93,4 +99,18 @@ input[type="username"]:valid
     color: #CAC4C0;
   }
 
+}
+
+.special-form-box {
+  margin: 10px;
+  width: 400px;
+  background: white;
+  padding: 40px;
+  padding-bottom: 60px;
+  box-sizing: border-box;
+}
+
+.special-position {
+  margin-top: -20px;
+  margin-left: -20px;
 }
