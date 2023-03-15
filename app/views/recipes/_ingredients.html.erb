@@ -17,16 +17,17 @@
   <div class="buttons-wrapper-options"
   >
       <button
-      class="my-button my-button-show"
-
+      class="my-button my-button-show <%= factor == 1 ? "active" : "" %>"
       data-action="click->ingredients#changePortion"
       data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: measurement, factor: 1) %>"
     >1x</button>
     <button
-      class="my-button my-button-show"
-      data-action="click->ingredients#changePortion"
+      class="my-button my-button-show <%= factor == 2 ? "active" : "" %>"
+      data-action="click->ingredients#changePortion "
       data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: measurement, factor: 2) %>"
     >2x</button>
+
+
     <button
       class="my-button my-button-show <%= measurement == "us" ? "active" : "" %>"
       data-action="click->ingredients#changeUnits"

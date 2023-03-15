@@ -41,17 +41,19 @@ class RecipesController < ApplicationController
     @favourite ||= Favourite.new
     @review = Review.new
 
-    @factor = params[:factor] || 1
+    @factor = (params[:factor] || 1).to_i
     @average_rating = @recipe.reviews.map { |review| review.rating }.sum / @recipe.reviews.count if @recipe.reviews.any?
-    render locals: { measurement: "eu", ingredients: handleUnit("eu", @factor) }
+    render locals: { measurement: "eu", ingredients: handleUnit("eu", @factor), factor: @factor }
   end
 
   def ingredients
     @recipe = Recipe.find(params[:recipe_id])
-    @factor = params[:factor] || 1
-    render partial: "ingredients",
-           locals: { measurement: params[:measurement],
-                     ingredients: handleUnit(params[:measurement], params[:factor].to_f) }
+    @factor = (params[:factor] || 1).to_i
+    render partial: "ingredients", locals: {
+      measurement: params[:measurement],
+      factor: @factor,
+      ingredients: handleUnit(params[:measurement], params[:factor].to_f)
+    }
   end
 
   def new
