@@ -1,0 +1,29 @@
+<h1>Add ingredients to your recipe</h1>
+
+<%= simple_form_for [@recipe, @recipe_ingredient] do |f| %>
+  <%= f.simple_fields_for :ingredient do |ingredient_form| %>
+    <%= ingredient_form.input :name %>
+  <% end %>
+  <%= f.input :measurement_eu_amount %>
+  <%= f.input :measurement_eu_unit %>
+  <%= f.button :submit, "Add ingredient" %>
+<% end %>
+
+<%= link_to "Done", recipe_path(@recipe) %>
+
+<ul>
+  <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
+    <li class="recipe-ingredients">
+    <%= link_to "x",
+            recipe_ingredient_path(recipe_ingredient),
+            class: "my-links my-button",
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+    %>
+    <span class="ingredient"><%= recipe_ingredient.measurement_eu_amount %></span>
+
+      <%= recipe_ingredient.measurement_eu_unit %>
+
+      <%= recipe_ingredient.ingredient.name %>
+    </li>
+  <% end %>
+</ul>

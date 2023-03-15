@@ -15,33 +15,54 @@
   </div>
 
   <div class="buttons-container">
-    <%= f.input :category, as: :check_boxes,  input_html: { class: "tag-selector" }, legend_tag:false,
-                item_wrapper_class: 'tag-item', collection: [["Vegan", "vegan"], ["Vegetarian", "vegetarian"], ["Meat", "meat"]] %>
-    <div class="tag-item"><%= f.submit "Filter", id:'filter-button' %></div>
+    <%= f.input :category,
+            as: :check_boxes,
+            input_html: {
+              class: "tag-selector"
+            },
+            legend_tag: false,
+            item_wrapper_class: "tag-item",
+            collection: [%w[Vegan vegan], %w[Vegetarian vegetarian], %w[Meat meat]] %>
+    <div class="tag-item"><%= f.submit "Filter", id: "filter-button" %></div>
   </div>
 <% end %>
 
 <% @recipes.each do |recipe| %>
   <div class="card" data-controller="filter">
     <%= link_to recipe_path(recipe) do %>
-      <div class="image-container" style="background-image:url('<%= image_url recipe.image %>');"></div>
+      <% if recipe.photo.attached? %>
+        <div
+          class="image-container"
+          style="background-image:url('<%= cl_image_path recipe.photo.key %>')"
+        ></div>
+      <% else %>
+        <div class="image-container" style="background-image:url('no-image.jpeg');"></div>
+      <% end %>
     <% end %>
     <%= render "favourites/favourite", recipe: recipe %>
-    <div class="label"> <%= recipe.category %> </div>
+    <div class="label">
+      <%= recipe.category %>
+    </div>
     <div class="link-plus-container">
       <%= link_to recipe.title, recipe_path(recipe), class: "card-title" %>
-      <button class="plus-sign" data-action="click->filter#expander" data-filter-target="button">
+      <button
+        class="plus-sign"
+        data-action="click->filter#expander"
+        data-filter-target="button"
+      >
         +
       </button>
     </div>
     <div class="collapse" data-filter-target="collapser">
-        <ul>
-          <% recipe.ingredients.each do |ingredient| %>
-            <li class="recipe-ingredients">
-              <%= ingredient[:name].capitalize %>
-            </li>
-          <% end %>
-        </ul>
+      <ul>
+        <p>Ingredients:</p>
+        <% recipe.ingredients.each do |ingredient| %>
+          <li class="recipe-ingredients">
+
+            <%= ingredient[:name].capitalize %>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 <% end %>

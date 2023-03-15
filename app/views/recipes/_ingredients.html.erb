@@ -1,47 +1,60 @@
-<%= render "cook", ingredients: ingredients %>
-  <div class="buttons-wrapper">
-    <button
-      class="my-button my-button-show my-button-show-cook"
-      data-action="click->page-orientation#changeOrientation"
-    >Cook</button>
-    <div class="buttons-wrapper-options"
-    >
-       <button
-        class="my-button my-button-show"
-        data-action="click->ingredients#changePortion"
-        data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: measurement, factor: 1) %>"
-      >1x</button>
-      <button
-        class="my-button my-button-show"
-        data-action="click->ingredients#changePortion"
-        data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: measurement, factor: 2) %>"
-      >2x</button>
-      <button
-        class="my-button my-button-show <%= measurement == "us" ? "active" : "" %>"
-        data-action="click->ingredients#changeUnits"
-        data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: "us", factor: @factor) %>"
-      >US</button>
-      <button
-        class="my-button my-button-show <%= measurement == "eu" ? "active" : "" %>"
-        data-action="click->ingredients#changeUnits"
-        data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: "eu", factor: @factor)%>"
-      >Metric</button>
-    </div>
+<div data-controller="page-orientation" data-route="<%=recipe_cook_path(recipe_id: @recipe.id) %>">
+<div class="buttons-wrapper">
+<div class="my-button-show my-button-show-cook">
+  <button
+    class="my-button"
+    data-action="click->page-orientation#changeOrientation"
+  >Cook
+  <%= image_tag("icons/play.svg") %></button>
+  </div>
+  <div
+    data-page-orientation-target="fullscreen"
+    class="cooking-mode-hidden cooking-mode"
+  >
+    <%= render "cook", ingredients: ingredients %>
   </div>
 
-  <h4>Ingredients</h4>
-  <% if user_signed_in? && current_user == @recipe.user %>
-      <%= link_to "Add ingredients", new_recipe_ingredient_path(@recipe) %>
-  <% end %>
+  <div class="buttons-wrapper-options"
+  >
+      <button
+      class="my-button my-button-show"
+
+      data-action="click->ingredients#changePortion"
+      data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: measurement, factor: 1) %>"
+    >1x</button>
+    <button
+      class="my-button my-button-show"
+      data-action="click->ingredients#changePortion"
+      data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: measurement, factor: 2) %>"
+    >2x</button>
+    <button
+      class="my-button my-button-show <%= measurement == "us" ? "active" : "" %>"
+      data-action="click->ingredients#changeUnits"
+      data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: "us", factor: @factor) %>"
+    >US</button>
+    <button
+      class="my-button my-button-show <%= measurement == "eu" ? "active" : "" %>"
+      data-action="click->ingredients#changeUnits"
+      data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: "eu", factor: @factor)%>"
+    >Metric</button>
+  </div>
+</div>
+</div>
+  <div class="links-container">
+    <h4>Ingredients</h4>
+    <% if user_signed_in? && current_user == @recipe.user %>
+        <%= link_to "Add ingredients", new_recipe_recipe_ingredient_path(@recipe.id), class: "my-links my-button" %>
+    <% end %>
+  </div>
   <ul>
     <% ingredients.each do |ingredient| %>
       <li class="recipe-ingredients">
 
-        <span class="ingredient"><%= ingredient[:amount] %></span>
+      <span class="ingredient"><%= ingredient[:amount] %></span>
 
-        <%= ingredient[:unit].capitalize == "G" ? "Grams" :  ingredient[:unit].capitalize %>
+      <%= ingredient[:unit].capitalize == "G" ? "Grams" :  ingredient[:unit].capitalize %>
 
-        <%= ingredient[:name].capitalize   %>
+      <%= ingredient[:name].capitalize   %>
       </li>
     <% end %>
   </ul>

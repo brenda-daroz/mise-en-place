@@ -1,6 +1,7 @@
 class Recipe < ApplicationRecord
 
   include PgSearch::Model
+
   has_many :steps, dependent: :destroy
   has_many :recipe_ingredients, dependent: :destroy
   has_many :ingredients, through: :recipe_ingredients
@@ -10,6 +11,7 @@ class Recipe < ApplicationRecord
   # scope :vegan, -> { where(vegan: true) }
   # scope :meat, -> { where(vegan: false, vegetarian: false) }
   belongs_to :user
+  has_one_attached :photo
 
   # This instead of being 2 separete colums in the Recipes table
   # remove the vegetarian and vegan columns

@@ -1,9 +1,10 @@
 .my-button {
   border-radius: 100px;
-  padding: 8px;
+  padding: 6px;
   gap: 10px;
   background-color: $light-orange;
   border: none;
+  color: black
 }
 
 .my-button:target {
@@ -14,6 +15,20 @@
   width: 60px;
   font-size: 12px;
   padding: 6px;
+}
+
+.my-button-show-cook {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  width: 80px;
+  // background-color: $orange;
+}
+
+.my-button-show-cook img {
+  width: 18px;
+  height: 18px;
+  color: black;
 }
 
 .active {
@@ -30,4 +45,37 @@
   cursor: pointer;
   width: 100%;
   margin-bottom: 10px;
+}
+
+.exit-button {
+  margin: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.my-links {
+  text-decoration: none;
+  color: $orange;
+  background: none;
+  border: 1px solid $orange;
+  font-size: 12px;
+  border-radius: 100px;
+  padding: 5px;
+  padding-right: 16px;
+  padding-left: 16px;
+  // gap: 10px;
+  text-align: center;
+
+}
+
+.links-container {
+  display: flex;
+  justify-content: space-between;
+  height: 26px;
+}
+
+.delete-button-container {
+  display: flex;
+  justify-content: center;
 }

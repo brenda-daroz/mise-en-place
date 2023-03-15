@@ -21,7 +21,7 @@ $scroll-factor : .4;
 }
 
 .section {
-  min-height: 100vh;
+  // min-height: 100vh;
   background: white;
   transform: translateZ(0);
   padding: 10px 0;
@@ -60,13 +60,10 @@ $scroll-factor : .4;
   opacity: 0.8;
 
   text-decoration: none;
+
   &:focus {
     outline: none !important;
   }
-}
-
-.my-button-show-cook {
-  width: 80px;
 }
 
 // header-img
@@ -91,6 +88,9 @@ $scroll-factor : .4;
   background-color: white;
 }
 
+.show-main-steps {
+  padding: 0 15px;
+}
 
 
 .show-title {
@@ -113,6 +113,10 @@ span.ingredient {
 
 span.step {
   color: $orange;
+}
+
+.links-container {
+  margin-bottom: 10px;
 }
 
 //ripple effect

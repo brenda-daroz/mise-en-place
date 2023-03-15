@@ -1,0 +1,33 @@
+/* (A) WRONG ORIENTATION - SHOW MESSAGE HIDE CONTENT */
+@media only screen and (orientation:portrait) {
+  #turn {
+    margin: 0 auto;
+    display: block;
+    height: 70vh;
+
+    & p {
+      text-align: center;
+      color: $orange;
+      // background-color: rgb(230, 230, 230);
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
+
+  #container {
+
+    display: none;
+  }
+}
+
+/* (B) CORRECT ORIENTATION - SHOW CONTENT HIDE MESSAGE */
+@media only screen and (orientation:landscape) {
+  #turn {
+    display: none;
+  }
+
+  #container {
+    display: block;
+    // margin-top: 20px;
+  }
+}
