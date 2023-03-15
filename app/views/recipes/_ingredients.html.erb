@@ -16,6 +16,12 @@
 
   <div class="buttons-wrapper-options"
   >
+
+    <button
+      class="my-button my-button-show <%= factor %>  <%= factor == 0.5 ? "active" : "" %>"
+      data-action="click->ingredients#changePortion"
+      data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: measurement, factor: 0.5) %>"
+    >1/2x</button>
       <button
       class="my-button my-button-show <%= factor == 1 ? "active" : "" %>"
       data-action="click->ingredients#changePortion"
