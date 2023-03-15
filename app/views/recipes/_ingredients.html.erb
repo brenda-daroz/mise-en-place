@@ -31,12 +31,12 @@
     <button
       class="my-button my-button-show <%= measurement == "us" ? "active" : "" %>"
       data-action="click->ingredients#changeUnits"
-      data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: "us", factor: @factor) %>"
+      data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: "us", factor: factor) %>"
     >US</button>
     <button
       class="my-button my-button-show <%= measurement == "eu" ? "active" : "" %>"
       data-action="click->ingredients#changeUnits"
-      data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: "eu", factor: @factor)%>"
+      data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: "eu", factor: factor)%>"
     >Metric</button>
   </div>
 
