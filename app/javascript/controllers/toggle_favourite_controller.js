@@ -19,7 +19,7 @@ export default class extends Controller {
     this.iconTarget.classList.toggle('fa-solid')
     fetch(url)
     if (window.location.href.includes("fav")) {
-      this.element.classList.add("d-none")
+      this.element.parentElement.classList.add("d-none")
     }
   }
 }
