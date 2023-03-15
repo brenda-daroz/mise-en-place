@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   resources :recipe_ingredients, only: %i[destroy]
   resources :steps, only: %i[destroy]
   resources :ingredients, only: %i[new create]
-  # resources :favourites, only: %i[destroy index fav]
+  resources :favourites, only: %i[destroy index]
   # resources :reviews, only: %i[destroy]
-
 end

@@ -3,6 +3,7 @@ class FavouritesController < ApplicationController
 
   def index
     @favourites = Favourite.where(user: current_user)
+    @recipes = @favourites.map { |favourite| favourite.recipe }
   end
 
   def new
@@ -27,5 +28,4 @@ class FavouritesController < ApplicationController
     @favourite.recipe = @recipe
     @favourite.save
   end
-
 end
