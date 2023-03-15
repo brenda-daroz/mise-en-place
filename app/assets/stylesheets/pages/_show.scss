@@ -88,6 +88,9 @@ $scroll-factor : .4;
   background-color: white;
 }
 
+.show-main-steps {
+  padding: 0 15px;
+}
 
 
 .show-title {
@@ -110,6 +113,10 @@ span.ingredient {
 
 span.step {
   color: $orange;
+}
+
+.links-container {
+  margin-bottom: 10px;
 }
 
 //ripple effect
