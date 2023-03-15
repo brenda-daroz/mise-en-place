@@ -1,23 +1,25 @@
-<h1>Create your own Recipe</h1>
 
-<div>
+<div class="form-box">
+<h1>Create your own Recipe</h1>
   <%= simple_form_for @recipe do |f| %>
-    <%= f.input :title, placeholder: "your amazing recipe" %>
-    <%= f.input :servings, placeholder: "e.g. 10" %>
+    <%= f.input :title %>
+    <%= f.input :servings %>
     <%= f.input :readyInMinutes,
-            label: "Time to cook recipe (in minutes)",
-            placeholder: "e.g. 45" %>
-    <%# <%= f.input :image, as: :file, label: "Photo of your Dish" %>
-    <%= f.input :photo, as: :file, label: "Photo of your Dish" %>
+            label: "Time to cook recipe (in minutes)" %>
+    <%= f.input :photo, as: :file, label: "Upload picture" %>
     <h6>Choose a category</h6>
-    <%= f.collection_radio_buttons :category,
-                               [
-                                 [:vegan, "Vegan"],
-                                 [:vegetarian, "Vegetarian"],
-                                 [:meat, "Meat"]
-                               ],
-                               :first,
-                               :last %>
-    <%= f.button :submit %>
+    <div class="radio-btns-container">
+      <%= f.collection_radio_buttons :category,
+                                [
+                                  [:vegan, "Vegan"],
+                                  [:vegetarian, "Vegetarian"],
+                                  [:meat, "Meat"]
+                                ],
+                                :first,
+                                :last %>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, class: "my-button-form" %>
+    </div>
   <% end %>
 </div>

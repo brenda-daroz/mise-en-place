@@ -1,23 +1,27 @@
-<h1>Add instrucitons to your recipe</h1>
-<div>
+<div class="form-box">
+  <%= link_to "Done", recipe_path(@recipe), class: "my-links done-position" %>
+  <h1>Add instrucitons to your recipe</h1>
   <%= simple_form_for [@recipe, @step] do |f| %>
     <%= f.input :number %>
-    <%= f.input :step %>
-    <%= f.button :submit, "Add step" %>
+    <%= f.input :step, label: 'Description' %>
+    <div class="form-actions">
+      <%= f.button :submit, "Add step", class: "my-button-form" %>
+    </div>
   <% end %>
-  <%= link_to "Done", recipe_path(@recipe) %>
-</div>
 
-<div class="show-steps">
-  <ul>
-    <% @recipe.steps.each_with_index do |step| %>
-      <li><span class="step"><%= step.number %>.</span>
-        <%= link_to "x",
-            step_path(step),
-            class: "my-links my-button",
-            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-        <%= step.step %>
-      </li>
-    <% end %>
-  </ul>
+  <div class="show-steps">
+    <ul>
+      <% @recipe.steps.each do |step| %>
+        <li>
+          <%= link_to "x",
+              step_path(step),
+              class: "x-btn my-links",
+              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          <span class="step"><%= step.number %>.</span>
+          <%= step.step %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
 </div>

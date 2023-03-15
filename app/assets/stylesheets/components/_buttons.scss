@@ -43,7 +43,7 @@
   color: white;
   cursor: pointer;
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
 }
 
 .exit-button {
@@ -54,10 +54,10 @@
 }
 
 .my-links {
-  text-decoration: none;
-  color: $orange;
+  text-decoration: none !important;
+  color: $orange !important;
   background: none;
-  border: 1px solid $orange;
+  border: 1px solid $orange !important;
   font-size: 12px;
   border-radius: 100px;
   padding: 5px;
@@ -78,6 +78,20 @@
   display: flex;
   justify-content: center;
 }
+
+
+.radio-btns-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.x-btn {
+  color: red !important;
+  font-size: 20px !important;
+  padding: 0px;
+  font-weight: 700px;
 
 .favorites-button {
   margin-top: 20px;
