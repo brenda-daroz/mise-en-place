@@ -1,0 +1,11 @@
+
+<div class="review-card">
+  <% review.rating.times do %>
+  <i class="fa-solid fa-pizza-slice rating-active"></i>
+  <% end %>
+  <% (5 - review.rating).times do %>
+  <i class="fa-solid fa-pizza-slice rating-inactive"></i>
+  <% end %>
+  <p>"<%= review.content %>"</p>
+</div>
+<div class="separation-line"> </div>

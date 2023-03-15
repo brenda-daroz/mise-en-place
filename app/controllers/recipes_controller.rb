@@ -39,6 +39,7 @@ class RecipesController < ApplicationController
 
     @favourite = @recipe.favourites.find_by(user: current_user)
     @favourite ||= Favourite.new
+    @review = Review.new
 
     @factor = params[:factor] || 1
     render locals: { measurement: "eu", ingredients: handleUnit("eu", @factor) }

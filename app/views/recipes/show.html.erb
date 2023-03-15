@@ -54,6 +54,38 @@
         </ul>
       </div>
     </div>
+
+
+    <h4>Reviews</h4>
+    <div data-controller="insert-in-list">
+      <div data-insert-in-list-target="items">
+      <ul>
+        <% if @recipe.reviews.blank? %>
+          Be the first to leave a review for <%= @recipe.title %>.
+        <% else %>
+          <% @recipe.reviews.each do |review| %>
+            <%= render "recipes/review", review: review %>
+          <% end %>
+            </ul>
+        <% end %>
+      </div>
+
+
+
+ <div class="card" id="add-review" data-controller="filter">
+    <div class="link-plus-container">
+      <h4> Leave your review here. </h4>
+      <button class="review-plus-sign" data-action="click->filter#expander" data-filter-target="button">
+        +
+      </button>
+      </div>
+        <div class="collapse" data-filter-target="collapser">
+            <%= render "reviews/form", recipe: @recipe, review: Review.new %>
+        </div>
+    </div>
+  </div>
+
+
     <% if user_signed_in? && current_user == @recipe.user %>
       <div class="delete-button-container">
         <%= link_to "Delete recipe",
@@ -65,5 +97,6 @@
         } %>
       </div>
     <% end %>
+
   </div>
 </div>

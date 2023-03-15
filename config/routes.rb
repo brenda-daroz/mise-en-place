@@ -12,11 +12,18 @@ Rails.application.routes.draw do
     resources :favourites, only: %i[new create]
     get 'fav', to: 'favourites#fav', as: :fav
     resources :steps, only: %i[new create]
+    resources :reviews, only: %i[create]
     resources :recipe_ingredients, only: %i[new create]
+  end
+
+  resources :favourites, only: %i[destroy index] do
+    get 'fav', to: 'favourites#fav', as: :fav
   end
 
   resources :recipe_ingredients, only: %i[destroy]
   resources :steps, only: %i[destroy]
   resources :ingredients, only: %i[new create]
-  resources :favourites, only: %i[destroy index fav]
+  # resources :favourites, only: %i[destroy index fav]
+  # resources :reviews, only: %i[destroy]
+
 end
