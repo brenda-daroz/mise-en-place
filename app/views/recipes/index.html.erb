@@ -55,8 +55,10 @@
     </div>
     <div class="collapse" data-filter-target="collapser">
       <ul>
+        <p>Ingredients:</p>
         <% recipe.ingredients.each do |ingredient| %>
           <li class="recipe-ingredients">
+
             <%= ingredient[:name].capitalize %>
           </li>
         <% end %>

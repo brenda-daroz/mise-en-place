@@ -1,11 +1,11 @@
 <div data-controller="page-orientation" data-route="<%=recipe_cook_path(recipe_id: @recipe.id) %>">
 <div class="buttons-wrapper">
-<div class="my-button my-button-show my-button-show-cook">
+<div class="my-button-show my-button-show-cook">
   <button
     class="my-button"
     data-action="click->page-orientation#changeOrientation"
-  >Cook</button>
-  <%= image_tag("icons/play.svg") %>
+  >Cook
+  <%= image_tag("icons/play.svg") %></button>
   </div>
   <div
     data-page-orientation-target="fullscreen"

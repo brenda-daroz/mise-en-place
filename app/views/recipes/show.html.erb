@@ -21,10 +21,6 @@
     <% else %>
       <div class="recipe-img" style="background-image:url('no-image.jpeg');"></div>
     <% end %>
-
-    <%# <% if @recipe.image %>
-    <%# <%= image_tag @recipe.image, class: "recipe-img" %>
-    <%# <% end %>
   </div>
 
   <div class="show-main section">
@@ -40,20 +36,23 @@
         factor: @factor %>
       </div>
     </div>
-    <div class="links-container">
-      <h4>Steps</h4>
-      <% if user_signed_in? && current_user == @recipe.user %>
-        <%= link_to "Add steps", new_recipe_step_path(@recipe), class: "my-links my-button" %>
-      <% end %>
-    </div>
 
-    <div class="show-steps">
-      <ul>
-        <% @recipe.steps.each_with_index do |step| %>
-          <li><span class="step"><%= step.number %>.</span>
-            <%= step.step %></li>
+    <div class="show-main-steps">
+      <div class="links-container">
+        <h4>Steps</h4>
+        <% if user_signed_in? && current_user == @recipe.user %>
+          <%= link_to "Add steps", new_recipe_step_path(@recipe), class: "my-links my-button" %>
         <% end %>
-      </ul>
+      </div>
+
+      <div class="show-steps">
+        <ul>
+          <% @recipe.steps.each_with_index do |step| %>
+            <li><span class="step"><%= step.number %>.</span>
+              <%= step.step %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
     <% if user_signed_in? && current_user == @recipe.user %>
       <div class="delete-button-container">
