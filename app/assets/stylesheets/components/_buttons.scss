@@ -66,9 +66,16 @@
   padding-left: 16px;
   // gap: 10px;
   text-align: center;
+
 }
 
 .links-container {
   display: flex;
   justify-content: space-between;
+  height: 26px;
+}
+
+.delete-button-container {
+  display: flex;
+  justify-content: center;
 }
