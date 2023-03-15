@@ -30,10 +30,14 @@
 <% @recipes.each do |recipe| %>
   <div class="card" data-controller="filter">
     <%= link_to recipe_path(recipe) do %>
-      <div
-        class="image-container"
-        style="background-image:url('no-image.jpeg');"
-      ></div>
+      <% if recipe.photo.attached? %>
+        <div
+          class="image-container"
+          style="background-image:url('<%= cl_image_path recipe.photo.key %>')"
+        ></div>
+      <% else %>
+        <div class="image-container" style="background-image:url('no-image.jpeg');"></div>
+      <% end %>
     <% end %>
     <%= render "favourites/favourite", recipe: recipe %>
     <div class="label">

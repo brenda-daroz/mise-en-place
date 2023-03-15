@@ -78,7 +78,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :servings, :image, :readyInMinutes, :category, :user_id)
+    params.require(:recipe).permit(:title, :servings, :image, :readyInMinutes, :category, :user_id, :photo)
   end
 
   def handleUnit(measurement, factor)
