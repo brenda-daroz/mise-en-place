@@ -1,75 +1,94 @@
-<div data-controller="page-orientation" data-route="<%=recipe_cook_path(recipe_id: @recipe.id) %>">
+<div
+  data-controller="page-orientation"
+  data-route="<%=recipe_cook_path(recipe_id: @recipe.id) %>"
+>
   <div class="cook-button-wrapper">
-  <button
-    class="my-button my-button-show my-button-show-cook"
-    data-action="click->page-orientation#changeOrientation"
-  >Start cooking
-  <%= image_tag("icons/play.svg") %></button>
-  </div>
-<div class="buttons-wrapper">
-  <div
-    data-page-orientation-target="fullscreen"
-    class="cooking-mode-hidden cooking-mode"
-  >
-    <%= render "cook", ingredients: ingredients %>
+    <button
+      class="my-button my-button-show my-button-show-cook"
+      data-action="click->page-orientation#changeOrientation"
+    >
+      Start cooking
+      <%= image_tag("icons/play.svg") %>
+    </button>
   </div>
 
-  <div class="buttons-wrapper-options"
-  >
+  <div class="buttons-wrapper">
+    <div
+      data-page-orientation-target="fullscreen"
+      class="cooking-mode-hidden cooking-mode"
+    >
+      <%= render "cook", ingredients: ingredients %>
+    </div>
 
     <button
       class="my-button my-button-show <%= factor == 0.5 ? "active" : "" %>"
       data-action="click->ingredients#changePortion"
       data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: measurement, factor: 0.5) %>"
-    >1/2x</button>
-      <button
+    >
+      1/2x
+    </button>
+
+    <button
       class="my-button my-button-show <%= factor == 1 ? "active" : "" %>"
       data-action="click->ingredients#changePortion"
       data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: measurement, factor: 1) %>"
-    >1x</button>
+    >
+      1x
+    </button>
+
     <button
       class="my-button my-button-show <%= factor == 2 ? "active" : "" %>"
       data-action="click->ingredients#changePortion "
       data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: measurement, factor: 2) %>"
-    >2x</button>
-
+    >
+      2x
+    </button>
 
     <button
       class="my-button my-button-show <%= measurement == "us" ? "active" : "" %>"
       data-action="click->ingredients#changeUnits"
       data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: "us", factor: factor) %>"
-    >US</button>
+    >
+      US
+    </button>
+
     <button
       class="my-button my-button-show <%= measurement == "eu" ? "active" : "" %>"
       data-action="click->ingredients#changeUnits"
       data-route="<%= recipe_ingredients_path(recipe_id: @recipe.id, measurement: "eu", factor: factor)%>"
-    >Metric</button>
+    >
+      Metric
+    </button>
   </div>
 
-</div>
-<div class="d-flex justify-content-between">
-        <p><i class="fa-solid fa-utensils"></i> Serves <%= @recipe.servings  %></p>
-        <p><i class="fa-regular fa-clock"></i> Prep: <%= @recipe.readyInMinutes  %> mins</p>
-      </div>
-</div>
-<div>
-</div>
-  <div class="links-container">
-    <h4>Ingredients</h4>
-    <% if user_signed_in? && current_user == @recipe.user %>
-        <%= link_to "Add ingredients", new_recipe_recipe_ingredient_path(@recipe.id), class: "my-links my-button" %>
-    <% end %>
+  <div class="d-flex justify-content-between">
+    <p><i class="fa-solid fa-utensils"></i>
+      Serves
+      <%= @recipe.servings %></p>
+    <p><i class="fa-regular fa-clock"></i>
+      Prep:
+      <%= @recipe.readyInMinutes %>
+      mins</p>
   </div>
-  <ul>
-    <% ingredients.each do |ingredient| %>
-      <li class="recipe-ingredients">
+</div>
 
+<div class="links-container">
+  <h4>Ingredients</h4>
+  <% if user_signed_in? && current_user == @recipe.user %>
+    <%= link_to "Add ingredients",
+    new_recipe_recipe_ingredient_path(@recipe.id),
+    class: "my-links my-button" %>
+  <% end %>
+</div>
+
+<ul>
+  <% ingredients.each do |ingredient| %>
+    <li class="recipe-ingredients">
       <span class="ingredient"><%= ingredient[:amount] %>
 
-      <%= ingredient[:unit].capitalize == "G" ? "Grams" :  ingredient[:unit].capitalize %></span>
+        <%= ingredient[:unit].capitalize == "G" ? "Grams" : ingredient[:unit].capitalize %></span>
 
-      <%= ingredient[:name].capitalize   %>
-      </li>
-    <% end %>
-  </ul>
-</div>
+      <%= ingredient[:name].capitalize %>
+    </li>
+  <% end %>
+</ul>
