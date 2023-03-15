@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
 
   def index
     categories = params.dig(:search, :category)&.drop(1) || []
-    @recipes = []                                        # TODO : needs to be all recipes where assoctiated user is the admin
+    @recipes = []                                      # TODO : needs to be all recipes where assoctiated user is the admin
     categories.each { |category| @recipes += Recipe.public_send(category) }
     @recipes = Recipe.all if categories.empty?
     filter_by_global
