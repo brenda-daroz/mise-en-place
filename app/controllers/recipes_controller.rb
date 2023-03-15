@@ -98,13 +98,14 @@ class RecipesController < ApplicationController
 
   def handleUnit(measurement, factor)
     @recipe.recipe_ingredients.map do |ingredient|
-      if measurement == "us"
+      case measurement
+      when "us"
         {
           amount: ingredient.measurement_us_amount.round(1) * factor,
           unit: ingredient.measurement_us_unit,
           name: ingredient.ingredient.name
         }
-      elsif measurement == "eu"
+      when "eu"
         {
           amount: ingredient.measurement_eu_amount.round(1) * factor,
           unit: ingredient.measurement_eu_unit,
