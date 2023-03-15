@@ -4,20 +4,20 @@
 <h5>Find all your saved favourites here.
 </h5>
 
-<% @favourites.each do |recipe| %>
+<% @recipes.each do |recipe| %>
   <div class="card" data-controller="filter">
-    <%= link_to recipe_path(recipe.recipe) do %>
+    <%= link_to recipe_path(recipe) do %>
       <div
         class="image-container"
-        style="background-image:url('<%= cl_image_path recipe.recipe.photo.key %>')"
+        style="background-image:url('<%= cl_image_path recipe.photo.key %>')"
       ></div>
     <% end %>
-    <%= render "favourites/favourite", recipe: recipe %>
+    <%= render "favourite", recipe: recipe %>
     <div class="label">
-      <%= recipe.recipe.category %>
+      <%= recipe.category %>
     </div>
     <div class="link-plus-container">
-      <%= link_to recipe.recipe.title, recipe_path(recipe.recipe), class: "card-title" %>
+      <%= link_to recipe.title, recipe_path(recipe), class: "card-title" %>
       <button
         class="plus-sign"
         data-action="click->filter#expander"
@@ -28,7 +28,7 @@
     </div>
     <div class="collapse" data-filter-target="collapser">
       <ul>
-        <% recipe.recipe.ingredients.each do |ingredient| %>
+        <% recipe.ingredients.each do |ingredient| %>
           <li class="recipe-ingredients">
             <%= ingredient[:name].capitalize %>
           </li>

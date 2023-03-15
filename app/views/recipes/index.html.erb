@@ -28,7 +28,7 @@
 <% end %>
 
 <% @recipes.each do |recipe| %>
-  <div class="card" data-controller="filter">
+  <div class="card" data-controller="filter" data-controller="toggle-favourite">
     <%= link_to recipe_path(recipe) do %>
       <% if recipe.photo.attached? %>
         <div
