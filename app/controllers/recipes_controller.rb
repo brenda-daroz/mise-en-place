@@ -2,9 +2,9 @@ class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show ingredients cook]
 
   def index
-    categories = params.dig(:search, :category)&.drop(1)
+    @categories = params.dig(:search, :category)&.drop(1)
     @recipes = Recipe.includes(:user, :ingredients).joins(:user).where(users: { username: "admin" })                               # TODO : needs to be all recipes where assoctiated user is the admin
-    @recipes = @recipes.where(category: categories) if categories.present?
+    @recipes = @recipes.where(category: @categories) if @categories.present?
     filter_by_global
   end
 
