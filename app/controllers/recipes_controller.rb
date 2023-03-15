@@ -55,7 +55,7 @@ class RecipesController < ApplicationController
     render partial: "ingredients", locals: {
       measurement: params[:measurement],
       factor:,
-      ingredients: handleUnit(params[:measurement], factor.to_f)
+      ingredients: handleUnit(params[:measurement], factor)
     }
   end
 
@@ -99,13 +99,13 @@ class RecipesController < ApplicationController
     @recipe.recipe_ingredients.map do |ingredient|
       if measurement == "us"
         {
-          amount: ingredient.measurement_us_amount.round(1).to_f * factor,
+          amount: ingredient.measurement_us_amount.round(1) * factor,
           unit: ingredient.measurement_us_unit,
           name: ingredient.ingredient.name
         }
       elsif measurement == "eu"
         {
-          amount: ingredient.measurement_eu_amount.round(1).to_f * factor,
+          amount: ingredient.measurement_eu_amount.round(1) * factor,
           unit: ingredient.measurement_eu_unit,
           name: ingredient.ingredient.name
         }
