@@ -36,7 +36,6 @@
         factor: @factor %>
       </div>
     </div>
-
     <div class="show-main-steps">
       <div class="links-container">
         <h4>Steps</h4>
@@ -44,7 +43,6 @@
           <%= link_to "Add steps", new_recipe_step_path(@recipe), class: "my-links my-button" %>
         <% end %>
       </div>
-
       <div class="show-steps">
         <ul>
           <% @recipe.steps.each_with_index do |step| %>
@@ -53,35 +51,35 @@
           <% end %>
         </ul>
       </div>
-    </div>
 
 
     <h4>Reviews</h4>
+
+    <%# <%= render "recipes/average_rating", average_rating: @average_rating %>
+
     <div data-controller="insert-in-list">
-      <div data-insert-in-list-target="items">
-      <ul>
+      <div>
+      <ul data-insert-in-list-target="items">
         <% if @recipe.reviews.blank? %>
           Be the first to leave a review for <%= @recipe.title %>.
         <% else %>
           <% @recipe.reviews.each do |review| %>
             <%= render "recipes/review", review: review %>
           <% end %>
-            </ul>
+        </ul>
         <% end %>
       </div>
-
-
-
- <div class="card" id="add-review" data-controller="filter">
-    <div class="link-plus-container">
-      <h4> Leave your review here. </h4>
-      <button class="review-plus-sign" data-action="click->filter#expander" data-filter-target="button">
-        +
-      </button>
-      </div>
+      <div class="card" id="container-add-review" data-controller="filter">
+        <%# <div class="link-plus-container"> %>
+          <h6> Add your review here. </h6>
+          <button class="review-plus-sign" data-action="click->filter#expander" data-filter-target="button">
+            +
+          </button>
+        <%# </div> %>
         <div class="collapse" data-filter-target="collapser">
             <%= render "reviews/form", recipe: @recipe, review: Review.new %>
         </div>
+      </div>
     </div>
   </div>
 

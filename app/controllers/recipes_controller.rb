@@ -42,6 +42,7 @@ class RecipesController < ApplicationController
     @review = Review.new
 
     @factor = params[:factor] || 1
+    @average_rating = @recipe.reviews.map { |review| review.rating }.sum / @recipe.reviews.count if @recipe.reviews.any?
     render locals: { measurement: "eu", ingredients: handleUnit("eu", @factor) }
   end
 
