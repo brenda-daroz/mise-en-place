@@ -21,6 +21,13 @@ class RecipeIngredientsController < ApplicationController
     end
   end
 
+  def destroy
+    @recipe_ingredient = RecipeIngredient.find(params[:id])
+    @recipe_ingredient.destroy
+    # No need for app/views/restaurants/destroy.html.erb
+    redirect_to new_recipe_recipe_ingredient_path(@recipe_ingredient.recipe), status: :see_other
+  end
+
   private
 
   def recipe_ingredient_params

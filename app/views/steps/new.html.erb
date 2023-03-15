@@ -12,7 +12,12 @@
   <ul>
     <% @recipe.steps.each_with_index do |step| %>
       <li><span class="step"><%= step.number %>.</span>
-        <%= step.step %></li>
+        <%= link_to "x",
+            step_path(step),
+            class: "my-links my-button",
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        <%= step.step %>
+      </li>
     <% end %>
   </ul>
 </div>

@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   root to: "recipes#index"
 
   get 'dashboard', to: 'pages#dashboard'
-  # get "recipes/:id", to: "recipes#destroy", as: :delete
 
   resources :recipes do
     get 'ingredients/:measurement/:factor', to: 'recipes#ingredients', as: :ingredients
@@ -16,6 +15,8 @@ Rails.application.routes.draw do
     resources :recipe_ingredients, only: %i[new create]
   end
 
+  resources :recipe_ingredients, only: %i[destroy]
+  resources :steps, only: %i[destroy]
   resources :ingredients, only: %i[new create]
   resources :favourites, only: %i[destroy index fav]
 end
