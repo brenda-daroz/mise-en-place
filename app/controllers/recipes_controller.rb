@@ -28,10 +28,9 @@ class RecipesController < ApplicationController
 
   def cook
     @recipe = Recipe.find(params[:recipe_id])
-    @factor = params[:factor] || 1
     @measurement = params[:measurement] || "eu"
 
-    render "cook", locals: { ingredients: handleUnit(@measurement, @factor) }
+    render "cook", locals: { ingredients: handleUnit(@measurement, param_factor) }
   end
 
   def show
