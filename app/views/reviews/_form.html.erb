@@ -1,8 +1,16 @@
-      <%= simple_form_for([@recipe, @review], data: {
-        insert_in_list_target: "form",
-        action: "submit->insert-in-list#send"
-        }) do |f| %>
-        <%= f.input :rating %>
-        <%= f.input :content %>
-        <%= f.button :submit %>
-      <% end %>
+
+<div class="review-form-box">
+
+  <%= simple_form_for([recipe, review], data: { insert_in_list_target: "form", action: "submit->insert-in-list#send"}) do |f| %>
+  <div class="review-form-inputs">
+    <div>
+      <%= f.input :rating, label: "How would you rate the recipe?", collection: [ 1, 2, 3, 4, 5], selected: '1' %>
+    </div>
+
+    <div>
+      <%= f.input :content, label: "How did it turn out?", class: "review-field"  %>
+    </div>
+  </div>
+  <%= f.button :submit, "Leave review", class: "my-button-form" %>
+  <% end %>
+</div>

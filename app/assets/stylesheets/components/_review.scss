@@ -1,0 +1,61 @@
+.rating-active {
+  text-decoration: none;
+  font-size: 14px;
+  color: $orange;
+  }
+
+  .rating-inactive {
+    text-decoration: none;
+    font-size: 14px;
+    color: $light-orange;
+    }
+
+
+  .review-form-box {
+    position: absolute;
+    width: 90%;
+    background: white;
+    box-sizing: border-box;
+  }
+
+
+  .form-select, .form-control {
+    // border: .5px solid #DB6C2D;
+    // border-radius: 10px;
+    border: none;
+    border-bottom: 2px solid #DB6C2D;
+
+    &focus {
+      outline: none !important;
+    }
+  }
+
+
+  .review-card {
+    padding: 5px;
+
+  }
+
+  .separation-line {
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    border-bottom: .5px solid $orange;
+    margin-bottom: 20px;
+  }
+
+
+  #add-review {
+    margin: 10px;
+    border: none;
+    display: flex;
+    background-color: $light-orange;
+  }
+
+
+  .review-plus-sign {
+    background-color: transparent;
+    border: none;
+    color: $orange;
+    font-size: 30px;
+  }

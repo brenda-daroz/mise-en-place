@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     @review = Review.new(review_params)
     @review.recipe = @recipe
-    @review.user = @user
+    @review.user = current_user
 
     respond_to do |format|
       if @review.save

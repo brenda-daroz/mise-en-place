@@ -5,12 +5,10 @@ export default class extends Controller {
   static targets = ["items", "form"]
 
   connect() {
-    console.log(this.element)
-    console.log(this.itemsTarget)
-    console.log(this.formTarget)
+    // console.log(this.element)
+    // console.log(this.itemsTarget)
+    // console.log(this.formTarget)
   }
-
-
 
   send(event) {
     event.preventDefault()
@@ -28,5 +26,4 @@ export default class extends Controller {
         this.formTarget.outerHTML = data.form
       })
   }
-
 }
