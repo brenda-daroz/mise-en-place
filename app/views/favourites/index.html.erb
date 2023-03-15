@@ -1,27 +1,39 @@
-<h1>Welcome, <%= current_user.username %>! </h1>
-<h5>Find all your saved favourites here. </h5>
+<h1>Welcome,
+  <%= current_user.username %>!
+</h1>
+<h5>Find all your saved favourites here.
+</h5>
 
 <% @favourites.each do |recipe| %>
   <div class="card" data-controller="filter">
     <%= link_to recipe_path(recipe.recipe) do %>
-      <div class="image-container" style="background-image:url('<%= image_url recipe.recipe.image %>');"></div>
+      <div
+        class="image-container"
+        style="background-image:url('<%= cl_image_path recipe.recipe.photo.key %>')"
+      ></div>
     <% end %>
     <%= render "favourites/favourite", recipe: recipe %>
-    <div class="label"> <%= recipe.recipe.category %> </div>
+    <div class="label">
+      <%= recipe.recipe.category %>
+    </div>
     <div class="link-plus-container">
       <%= link_to recipe.recipe.title, recipe_path(recipe.recipe), class: "card-title" %>
-      <button class="plus-sign" data-action="click->filter#expander" data-filter-target="button">
+      <button
+        class="plus-sign"
+        data-action="click->filter#expander"
+        data-filter-target="button"
+      >
         +
       </button>
     </div>
     <div class="collapse" data-filter-target="collapser">
-        <ul>
-          <% recipe.recipe.ingredients.each do |ingredient| %>
-            <li class="recipe-ingredients">
-              <%= ingredient[:name].capitalize %>
-            </li>
-          <% end %>
-        </ul>
+      <ul>
+        <% recipe.recipe.ingredients.each do |ingredient| %>
+          <li class="recipe-ingredients">
+            <%= ingredient[:name].capitalize %>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 <% end %>
