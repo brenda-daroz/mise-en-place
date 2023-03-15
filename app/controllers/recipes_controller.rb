@@ -84,7 +84,7 @@ class RecipesController < ApplicationController
   private
 
   def param_factor
-    (params[:factor] || 1).to_i
+    (params[:factor] || 1).to_f
   end
 
   def param_measurement
