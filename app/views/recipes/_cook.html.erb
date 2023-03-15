@@ -28,6 +28,6 @@
     </ul>
   </div>
   <%= link_to "#{image_tag("icons/exit.svg")}".html_safe,
-  recipe_path(@recipe.id),
+  recipe_path(@recipe.id, measurement:, factor:),
   class: "exit-button" %>
 </div>

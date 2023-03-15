@@ -13,5 +13,10 @@
 </div>
 <!-- (B) CONTENTS AS USUAL -->
 <div id="container">
-  <%= render partial: "cook", locals: { ingredients: ingredients } %>
+  <%= render partial: "cook",
+  locals: {
+    ingredients: ingredients,
+    measurement:,
+    factor:
+  } %>
 </div>
