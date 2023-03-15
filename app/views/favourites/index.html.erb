@@ -1,9 +1,8 @@
-<div class="container">
+<div class="">
   <h1>Welcome,
     <%= current_user.username.capitalize %>!
   </h1>
-  <h5>Find all your saved favorites here
-  </h5>
+  <h5>Find all your saved favorites here</h5>
   <% if @recipes.empty? %>
     <p class="text-center my-button favorites-button"><%= link_to "Add recipe to favorites", recipes_path %></p>
   <% else %>
