@@ -5,9 +5,18 @@
     <%= f.input :title %>
     <%= f.input :servings %>
     <%= f.input :readyInMinutes,
-            label: "Time to cook recipe (in minutes)" %>
-    <%= f.input :photo, as: :file, label: "Upload picture" %>
-    <h6>Choose a category</h6>
+            label: "Time to cook (minutes)" %>
+    <div data-controller="photo-preview">
+      <%= f.input :photo, as: :file,
+                  label: "Upload a photo",
+                  input_html: { class: 'd-none hidden', data: { action: "change->photo-preview#displayPreview", photo_preview_target: "input" }},
+                  label_html: { class: 'upload-photo '} %>
+
+      <%= image_tag "", width: 300, class: "hidden", data: { photo_preview_target: "image" } %>
+    </div>
+
+
+    <h6 class="mt-3">Choose a category</h6>
     <div class="radio-btns-container">
       <%= f.collection_radio_buttons :category,
                                 [
