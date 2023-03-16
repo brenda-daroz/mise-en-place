@@ -63,41 +63,42 @@
           <% end %>
         </ul>
       </div>
+      <div class="show-main-steps">
+        <h4>Reviews</h4>
+        <% if user_signed_in? && current_user != @recipe.user %>
 
-      <h4>Reviews</h4>
-      <% if user_signed_in? && current_user != @recipe.user %>
-
-        <div data-controller="insert-in-list">
-          <div>
-            <ul data-insert-in-list-target="items">
-              <% if @recipe.reviews.blank? %>
-                <p data-insert-in-list-target="disclaimer">
-                  Be the first to leave a review.
-                </p>
-              <% else %>
-                <% @recipe.reviews.each do |review| %>
-                  <%= render "recipes/review", review: review %>
+          <div data-controller="insert-in-list">
+            <div>
+              <ul data-insert-in-list-target="items">
+                <% if @recipe.reviews.blank? %>
+                  <p data-insert-in-list-target="disclaimer">
+                    Be the first to leave a review.
+                  </p>
+                <% else %>
+                  <% @recipe.reviews.each do |review| %>
+                    <%= render "recipes/review", review: review %>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </ul>
-          </div>
-          <div class="card" id="container-add-review" data-controller="filter">
-            <h6>
-              Add your review here.
-            </h6>
-            <button
-              class="review-plus-sign"
-              data-action="click->filter#expander"
-              data-filter-target="button"
-            >
-              +
-            </button>
-            <div class="collapse" data-filter-target="collapser">
-              <%= render "reviews/form", recipe: @recipe, review: Review.new %>
+              </ul>
+            </div>
+            <div class="card" id="container-add-review" data-controller="filter">
+              <h6>
+                Add your review here.
+              </h6>
+              <button
+                class="review-plus-sign"
+                data-action="click->filter#expander"
+                data-filter-target="button"
+              >
+                +
+              </button>
+              <div class="collapse" data-filter-target="collapser">
+                <%= render "reviews/form", recipe: @recipe, review: Review.new %>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
       <% if user_signed_in? && current_user == @recipe.user %>
         <div class="delete-button-container">
           <%= link_to "Delete recipe",
