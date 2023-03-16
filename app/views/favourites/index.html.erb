@@ -1,6 +1,6 @@
 <div class="">
   <h1>Welcome,
-    <%= current_user.username.capitalize %>!
+    <%= current_user.username.capitalize.titleize %>!
   </h1>
   <h5>Find all your saved favorites here</h5>
   <% if @recipes.empty? %>
