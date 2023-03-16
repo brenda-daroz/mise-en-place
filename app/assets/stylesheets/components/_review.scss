@@ -2,81 +2,83 @@
   text-decoration: none;
   font-size: 14px;
   color: $orange;
+}
+
+.rating-inactive {
+  text-decoration: none;
+  font-size: 14px;
+  color: $light-orange;
+}
+
+
+.review-form-box {
+  position: absolute;
+  width: 100%;
+  background: white;
+  box-sizing: border-box;
+}
+
+// .form-select,
+.form-control,
+#review_rating,
+#review_content {
+  border: none;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-bottom: .5px solid $orange;
+  margin-bottom: 20px;
+
+  &focus {
+    outline: none !important;
+  }
+}
+
+.review-card {
+  padding: 5px;
+}
+
+.separation-line {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  border-bottom: .5px solid $orange;
+  margin-bottom: 20px;
+}
+
+
+#container-add-review {
+  margin-top: 50px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 5px;
+  // background-color: $light-orange;
+
+  h6 {
+    margin-bottom: -10px;
   }
 
-  .rating-inactive {
-    text-decoration: none;
-    font-size: 14px;
-    color: $light-orange;
-    }
+}
+
+.review-plus-sign {
+  background-color: transparent;
+  border: none;
+  color: $orange;
+  font-size: 50px;
+  font-weight: 600;
+  padding-top: 0px;
+}
 
 
-  .review-form-box {
-    position: absolute;
-    width: 100%;
-    background: white;
-    box-sizing: border-box;
-  }
+.average-rating {
+  display: flex;
+  justify-content: center;
 
-  // .form-select, .form-control
-  #review_rating, #review_content {
-    border: none;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    border-bottom: .5px solid $orange;
-    margin-bottom: 20px;
+  border: .5px solid $orange;
+  border-radius: 20px;
+  text-align: center;
+  padding-top: 15px;
 
-    &focus {
-      outline: none !important;
-    }
-  }
-
-  .review-card {
-    padding: 5px;
-  }
-
-  .separation-line {
-    display: flex;
-    justify-content: center;
-    width: 90%;
-    border-bottom: .5px solid $orange;
-    margin-bottom: 20px;
-  }
-
-
-  #container-add-review {
-    margin-top: 50px;
-    border: none;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    padding: 5px;
-    // background-color: $light-orange;
-
-    h6 {
-      margin-bottom: -10px;
-    }
-
-  }
-
-  .review-plus-sign {
-    background-color: transparent;
-    border: none;
-    color: $orange;
-    font-size: 50px;
-    font-weight: 600;
-    padding-top: 0px;
-  }
-
-
-  .average-rating {
-    display: flex;
-    justify-content: center;
-
-    border: .5px solid $orange;
-    border-radius: 20px;
-    text-align: center;
-    padding-top: 15px;
-
-  }
+}
