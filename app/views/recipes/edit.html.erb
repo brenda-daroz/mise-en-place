@@ -1,6 +1,13 @@
 <%= simple_form_for @recipe do |f| %>
   <%= f.input :title %>
-  <%= f.input :image %>
+  <%= f.input :photo,
+          input_html: {
+            class: "d-none"
+          },
+          label_html: {
+            class: "upload-photo"
+          },
+          label: "📷 Upload a photo" %>
   <%= f.input :category, collection: Recipe.categories.keys %>
   <%= f.button :submit %>
 <% end %>

@@ -2,9 +2,9 @@ class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show ingredients cook]
 
   def index
-    categories = params.dig(:search, :category)&.drop(1)
+    @categories = params.dig(:search, :category)&.drop(1)
     @recipes = Recipe.includes(:user, :ingredients).joins(:user).where(users: { username: "admin" })                               # TODO : needs to be all recipes where assoctiated user is the admin
-    @recipes = @recipes.where(category: categories) if categories.present?
+    @recipes = @recipes.where(category: @categories) if @categories.present?
     filter_by_global
   end
 
@@ -28,10 +28,12 @@ class RecipesController < ApplicationController
 
   def cook
     @recipe = Recipe.find(params[:recipe_id])
-    @factor = params[:factor] || 1
-    @measurement = params[:measurement] || "eu"
 
-    render "cook", locals: { ingredients: handleUnit(@measurement, @factor) }
+    render "cook", locals: {
+      ingredients: handleUnit(param_measurement, param_factor),
+      measurement: param_measurement,
+      factor: param_factor
+    }
   end
 
   def show
@@ -41,17 +43,25 @@ class RecipesController < ApplicationController
     @favourite ||= Favourite.new
     @review = Review.new
 
-    @factor = params[:factor] || 1
+    factor = param_factor
+    measurement = param_measurement
+
     @average_rating = @recipe.reviews.map { |review| review.rating }.sum / @recipe.reviews.count if @recipe.reviews.any?
-    render locals: { measurement: "eu", ingredients: handleUnit("eu", @factor) }
+
+    render locals: { measurement:, ingredients: handleUnit(measurement, factor), factor: }
   end
 
   def ingredients
     @recipe = Recipe.find(params[:recipe_id])
-    @factor = params[:factor] || 1
-    render partial: "ingredients",
-           locals: { measurement: params[:measurement],
-                     ingredients: handleUnit(params[:measurement], params[:factor].to_f) }
+
+    factor = param_factor
+    measurement = param_measurement
+
+    render partial: "ingredients", locals: {
+      measurement:,
+      factor:,
+      ingredients: handleUnit(measurement, factor)
+    }
   end
 
   def new
@@ -78,21 +88,30 @@ class RecipesController < ApplicationController
 
   private
 
+  def param_factor
+    (params[:factor] || 1).to_f
+  end
+
+  def param_measurement
+    params[:measurement] || "eu"
+  end
+
   def recipe_params
     params.require(:recipe).permit(:title, :servings, :image, :readyInMinutes, :category, :user_id, :photo)
   end
 
   def handleUnit(measurement, factor)
     @recipe.recipe_ingredients.map do |ingredient|
-      if measurement == "us"
+      case measurement
+      when "us"
         {
-          amount: ingredient.measurement_us_amount.round(1).to_f * factor,
+          amount: ingredient.measurement_us_amount.round(1) * factor,
           unit: ingredient.measurement_us_unit,
           name: ingredient.ingredient.name
         }
-      elsif measurement == "eu"
+      when "eu"
         {
-          amount: ingredient.measurement_eu_amount.round(1).to_f * factor,
+          amount: ingredient.measurement_eu_amount.round(1) * factor,
           unit: ingredient.measurement_eu_unit,
           name: ingredient.ingredient.name
         }
