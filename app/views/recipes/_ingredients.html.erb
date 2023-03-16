@@ -75,11 +75,15 @@
 <div class="links-container">
   <h4>Ingredients</h4>
   <% if user_signed_in? && current_user == @recipe.user %>
-    <%= link_to "Add ingredients",
+    <%= link_to "+ / -",
     new_recipe_recipe_ingredient_path(@recipe.id),
     class: "my-links my-button" %>
   <% end %>
 </div>
+
+<% if user_signed_in? && current_user == @recipe.user && @recipe.ingredients.present? == false %>
+  <div class="padding-left"><p> No ingredients added yet. <br> Click the + / - button</p></div>
+<% end %>
 
 <ul>
   <% ingredients.each do |ingredient| %>
