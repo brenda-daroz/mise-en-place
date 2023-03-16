@@ -68,4 +68,9 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+
+  config.hosts << /\A[a-z\d-]+\.loca\.lt\z/ 
+  config.hosts << "twelve-jeans-tap-62-96-151-154.loca.lt"
+
 end
