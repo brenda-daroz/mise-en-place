@@ -3,7 +3,7 @@ $scroll-factor : .4;
 // parallax effect
 
 .show-wrapper {
-  height: 100vh;
+  // height: 100vh;
   max-height: 100%;
   overflow-x: hidden;
   perspective: 1px;
@@ -17,11 +17,11 @@ $scroll-factor : .4;
   position: relative;
   object-fit: cover;
   transform-origin: center top;
-  transform: translateZ(-#{$scroll-factor * 1.4}px) scale(1 + $scroll-factor * 2);
+  transform: translateZ(-#{$scroll-factor * 1.2}px) scale(1 + $scroll-factor * 1.5);
 }
 
 .section {
-  // min-height: 100vh;
+  height: 100vh;
   background: white;
   transform: translateZ(0);
   padding: 10px 0;
@@ -154,19 +154,8 @@ span.step {
   margin-bottom: 10px;
 }
 
-//ripple effect
-
-.ripple {
-  background-position: center;
-  transition: 0.5s;
+.padding-left {
+  padding-left: 32px;
+  color: rgba(#1F1309, $alpha: 0.7);
 }
 
-.ripple:hover {
-  background: $light-orange radial-gradient(circle, transparent 1%, $orange 1%) center/15000%;
-}
-
-.ripple:active {
-  background-color: $light-orange;
-  background-size: 100%;
-  transition: 0s;
-}
