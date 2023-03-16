@@ -6,6 +6,7 @@
         class="<%= user_signed_in? && current_user.has_favourite?(recipe) ? 'fa-solid fa-heart'  : 'fa-regular fa-heart'%> icon-deco"
         data-toggle-favourite-target="icon"
       ></i>
+      <%# <div class="show-favourite-button-background"></div> %>
     <% end %>
   </div>
 </div>
