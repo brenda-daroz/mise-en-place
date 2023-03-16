@@ -19,11 +19,13 @@
             [%w[Vegan vegan], %w[Vegetarian vegetarian], %w[Meat meat]],
             :last,
             :first do |check| %>
-            <div class="tag-item">
-              <%= check.check_box class: "tag-selector", checked: @categories.present? && @categories.include?(check.value) %>
-              <%= check.label %>
-            </div>
-      <% end %>
+      <div class="tag-item">
+        <%= check.check_box class: "tag-selector",
+                        checked:
+                          @categories.present? && @categories.include?(check.value) %>
+        <%= check.label %>
+      </div>
+    <% end %>
     <div class="tag-item"><%= f.submit "Filter", id: "filter-button" %></div>
   </div>
 <% end %>
