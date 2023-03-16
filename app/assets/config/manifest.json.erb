@@ -1,0 +1,17 @@
+{
+  "background_color": "white",
+  "description": "Your sous-chef for stress-free cooking.",
+  "display": "fullscreen",
+  "name": "Mise En Place",
+  "icons": [
+    <% files = Dir.entries(Rails.root.join("app/assets/images/pwa-icons/")).select {|f| !File.directory? f} %>
+    <% files.each_with_index do |file, index| %>
+      <% match = file.match(/.+-(?<size>\d{2,3}x\d{2,3}).png/) %>
+      {
+        "src": "<%= image_path "icons/#{file}" %>",
+        "sizes": "<%= match && match[:size] %>",
+        "type": "image/png"
+      }<%= "," unless (files.size - 1) == index %>
+    <% end %>
+  ]
+}
