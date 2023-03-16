@@ -34,7 +34,7 @@
   padding-right: 16px;
   padding-left: 16px;
   gap: 10px;
-  background-color: rgba(250, 241, 236, 0.8)  !important;
+  background-color: rgba(250, 241, 236, 0.8) !important;
   border: none;
   font-size: 12px;
   text-align: center;
@@ -50,7 +50,7 @@
   padding-right: 16px;
   padding-left: 16px;
   gap: 10px;
-  background-color: rgba(250, 241, 236, 0.8)  !important;
+  background-color: rgba(250, 241, 236, 0.8) !important;
   border: none;
   font-size: 12px;
   text-align: center;
@@ -61,7 +61,12 @@
 
 h1 {
   text-align: center;
-  padding: 30px;
+  padding: 40px 30px 10px 30px;
+  font-weight: bolder;
+}
+
+.h1-title {
+  font-size: 2em;
 }
 
 
@@ -73,6 +78,7 @@ h1 {
   border-style: solid;
   border-width: 1px;
   margin: 20px;
+
   &:focus {
     outline: none !important;
   }
@@ -83,7 +89,7 @@ h1 {
 }
 
 .search-container {
-position: relative;
+  position: relative;
 }
 
 .searchbutton {
