@@ -1,8 +1,7 @@
-
 .form-box {
   margin: 10px;
   position: absolute;
-  width: 400px;
+  // width: 400px;
   background: white;
   padding: 40px;
   padding-bottom: 60px;
@@ -26,8 +25,7 @@
   input[type="email"],
   input[type="password"],
   input[type="password_confirmation"],
-  input[type="username"]
-   {
+  input[type="username"] {
     padding: 10px 0;
     margin-bottom: 30px;
     width: 100%;
@@ -45,46 +43,43 @@
   }
 
   .float {
-  position: absolute;
-  top: 10px;
-  left: 0;
-  color: #1F1309;
-  pointer-events: none;
-  transition: .5s;
-}
+    position: absolute;
+    top: 10px;
+    left: 0;
+    color: #1F1309;
+    pointer-events: none;
+    transition: .5s;
+  }
 
-input[type="email"]:focus ~.float,
-input[type="email"]:valid ~.float,
-  input[type="password"]:focus ~.float,
-  input[type="password"]:valid ~.float,
-  input[type="password_confirmation"]:focus ~.float,
-  input[type="password_confirmation"]:valid ~.float,
-  input[type="username"]:focus ~.float,
-  input[type="username"]:valid ~.float
- {
-   top: -12px;
-   left: 0;
-   color: #CAC4C0;
-   font-size: 12px;
-   font-weight: bold;
+  input[type="email"]:focus~.float,
+  input[type="email"]:valid~.float,
+  input[type="password"]:focus~.float,
+  input[type="password"]:valid~.float,
+  input[type="password_confirmation"]:focus~.float,
+  input[type="password_confirmation"]:valid~.float,
+  input[type="username"]:focus~.float,
+  input[type="username"]:valid~.float {
+    top: -12px;
+    left: 0;
+    color: #CAC4C0;
+    font-size: 12px;
+    font-weight: bold;
 
   }
 
   input[type="email"]:focus,
   input[type="email"]:valid,
-input[type="password"]:focus,
-input[type="password"]:valid,
-input[type="password_confirmation"]:focus,
-input[type="password_confirmation"]:valid,
-input[type="username"]:focus,
-input[type="username"]:valid
-{
-  border-bottom: 2px solid #DB6C2D;
-}
+  input[type="password"]:focus,
+  input[type="password"]:valid,
+  input[type="password_confirmation"]:focus,
+  input[type="password_confirmation"]:valid,
+  input[type="username"]:focus,
+  input[type="username"]:valid {
+    border-bottom: 2px solid #DB6C2D;
+  }
 
 
-#user_remember_me
-{
+  #user_remember_me {
     border: .2px solid #CAC4C0;
     background-color: #DB6C2D;
   }
@@ -103,7 +98,7 @@ input[type="username"]:valid
 
 .special-form-box {
   margin: 10px;
-  width: 400px;
+  // width: 400px;
   background: white;
   padding: 40px;
   padding-bottom: 60px;
