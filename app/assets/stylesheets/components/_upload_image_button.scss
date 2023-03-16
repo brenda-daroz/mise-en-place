@@ -1,8 +1,19 @@
 .upload-photo {
-  border: 1px solid #d3d3d3;
-  padding: 16px 24px;
-  cursor: pointer;
-  font-weight: 500;
-  background: white;
-  border-radius: 2px;
+  // border: 1px solid #d3d3d3;
+  // padding: 16px 24px;
+  // cursor: pointer;
+  // font-weight: 500;
+  // background: white;
+  // border-radius: 2px;
+  text-decoration: none !important;
+  color: $orange !important;
+  background: none;
+  border: 1px solid $orange !important;
+  font-size: 12px;
+  border-radius: 100px;
+  padding: 5px;
+  padding-right: 16px;
+  padding-left: 16px;
+  // gap: 10px;
+  text-align: center;
 }
