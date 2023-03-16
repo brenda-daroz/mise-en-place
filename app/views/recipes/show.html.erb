@@ -44,11 +44,15 @@
       <h4>Steps</h4>
 
       <% if user_signed_in? && current_user == @recipe.user %>
-        <%= link_to "Add steps", new_recipe_step_path(@recipe), class: "my-links my-button" %>
+        <%= link_to "+ / -", new_recipe_step_path(@recipe), class: "my-links my-button" %>
       <% end %>
     </div>
 
     <div class="show-steps">
+      <% if user_signed_in? && current_user == @recipe.user && @recipe.steps.present? == false %>
+        <div class="padding-left"><p> No steps added yet. <br> Click the + / - button</p></div>
+      <% end %>
+
       <ul>
         <% @recipe.steps.each_with_index do |step| %>
           <li>
