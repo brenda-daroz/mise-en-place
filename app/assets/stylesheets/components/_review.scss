@@ -22,7 +22,7 @@
     border: none;
     display: flex;
     justify-content: center;
-    width: 90%;
+    width: 100%;
     border-bottom: .5px solid $orange;
     margin-bottom: 20px;
 
@@ -72,7 +72,7 @@
   .average-rating {
     display: flex;
     justify-content: center;
-    
+
     border: .5px solid $orange;
     border-radius: 20px;
     text-align: center;
