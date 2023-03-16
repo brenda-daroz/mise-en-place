@@ -13,10 +13,9 @@
     <ul>
       <% @recipe.steps.each do |step| %>
         <li>
-          <%= link_to "x",
-              step_path(step),
-              class: "x-btn my-links",
-              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          <%= link_to(step_path(step), data: {turbo_method: :delete, turbolinks_scroll: false}, class: "no-style") do %>
+            <i class="fa-regular fa-circle-xmark red"></i>
+          <% end %>
           <span class="step"><%= step.number %>.</span>
           <%= step.step %>
         </li>

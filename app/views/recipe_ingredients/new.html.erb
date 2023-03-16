@@ -16,14 +16,12 @@
   <ul>
     <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
       <li class="recipe-ingredients">
-      <%= link_to "x",
-              recipe_ingredient_path(recipe_ingredient),
-              class: "x-btn my-links",
-              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-      %>
-      <span class="ingredient"><%= recipe_ingredient.measurement_eu_amount %></span>
-
+      <%= link_to(recipe_ingredient_path(recipe_ingredient), data: {turbo_method: :delete, turbolinks_scroll: false}) do %>
+        <i class="fa-regular fa-circle-xmark red"></i>
+      <% end %>
+      <span class="ingredient"><%= recipe_ingredient.measurement_eu_amount %>
         <%= recipe_ingredient.measurement_eu_unit %>
+      </span>
 
         <%= recipe_ingredient.ingredient.name %>
       </li>
