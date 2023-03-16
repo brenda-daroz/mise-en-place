@@ -1,5 +1,5 @@
 meta_product_name: "Mise en place"
 meta_title: "Mise en place - Cooking made easy"
-meta_description: "Relevant description"
-# meta_image: "cover.png" # should exist in `app/assets/images/`
+meta_description: "Have a nice experience cooking"
+meta_image: "cover.png"
 twitter_account: "@product_twitter_account"   # required for Twitter Cards
