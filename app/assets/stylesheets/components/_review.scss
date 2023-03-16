@@ -18,7 +18,8 @@
     box-sizing: border-box;
   }
 
-  .form-select, .form-control {
+  // .form-select, .form-control
+  #review_rating, #review_content {
     border: none;
     display: flex;
     justify-content: center;
@@ -72,7 +73,7 @@
   .average-rating {
     display: flex;
     justify-content: center;
-    
+
     border: .5px solid $orange;
     border-radius: 20px;
     text-align: center;

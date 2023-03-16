@@ -7,8 +7,8 @@
       <%= f.input :rating, label: "How would you rate the recipe?", collection: [ 1, 2, 3, 4, 5], selected: '1' %>
     </div>
 
-    <div>
-      <%= f.input :content, label: "How did it turn out?", class: "review-field"  %>
+    <div id="review-field-input">
+      <%= f.input :content, label: "How did it turn out?"  %>
     </div>
   <%# </div> %>
   <%= f.button :submit, "Leave review", class: "my-button-form" %>
