@@ -71,11 +71,10 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
-    if @recipe.save!
+    if @recipe.save
       redirect_to recipe_path(@recipe)
     else
-      redirect_to new_recipe_path
-      # trigger pop up saying "your recipe was not created, try again"
+      render :new, status: :unprocessable_entity
     end
   end
 
