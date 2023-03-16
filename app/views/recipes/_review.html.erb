@@ -6,6 +6,6 @@
   <% (5 - review.rating).times do %>
   <i class="fa-solid fa-pizza-slice rating-inactive"></i>
   <% end %>
-  <p>"<%= review.content %>"</p>
+  <p>"<%= review.content %>" — <i> <%= review.user.username %> </i> </p>
 </div>
 <div class="separation-line"> </div>
