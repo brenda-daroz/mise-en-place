@@ -1,11 +1,11 @@
 <div class="d-flex align-items-center justify-content-center">
-  <%# <%= image_tag "home-page-icon.png", size: "60x60" %>
   <h1 class="h1-title">mise en place</h1>
 </div>
 
-<%= simple_form_for :search, url: recipes_path, method: "GET", html: { class: '' } do |f| %>
+<%= simple_form_for :search, url: recipes_path, method: "GET", html: { class: 'form' } do |f| %>
   <div class="search-container">
     <%= f.input :query,
+            wrapper: false,
             input_html: {
               id: "search-bar",
               value: params.dig(:search, :query)
