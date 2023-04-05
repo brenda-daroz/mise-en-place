@@ -69,44 +69,6 @@ h1 {
   font-size: 2em;
 }
 
-// search bar
-.search-container {
-  width: 80%;
-  min-width: 237px;
-  margin: 20px auto;
-  display: flex;
-  border-radius: 20px;
-  border: 1px solid #DB6C2B;
-  justify-content: space-between;
-}
-
-#search-bar {
-  height: 40px;
-  margin-bottom: 0;
-  border-bottom: 0;
-
-  &:focus {
-    outline: none !important;
-  }
-}
-
-.search-container input {
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 18px;
-}
-
-.searchbutton {
-  border: none;
-  background: none;
-  color: #DB6C2B;
-  width: 40px
-}
-
-#search-bar::placeholder {
-  color: #D1CBC8;
-}
-
 #filter-button {
   background: none;
   color: #DB6C2B;
@@ -160,4 +122,42 @@ h1 {
   justify-content: space-between;
   padding-right: 7px;
   padding-left: 7px;
+
+}
+
+.collapse {
+  transition: all 1s ease-in;
+}
+
+@media screen and (min-width: 500px) {
+
+  .wrapper {
+    margin: 0 50px;
+  }
+
+  .cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cards-container::after {
+    content: "";
+    width: 350px;
+    margin: 20px;
+  }
+
+  .card {
+    width: 350px;
+  }
+
+  .index-form {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  .buttons-container {
+    justify-content: center;
+    gap: 15px;
+  }
 }
